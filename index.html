@@ -5,88 +5,319 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Sergi Salas</title>
   <style>
+    /* ====== GOOGLE FONTS ====== */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
     /* ====== ESTILOS GENERALES ====== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    
+    :root {
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --secondary-color: #64748b;
+      --accent-color: #0ea5e9;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      font-size: 16px;
     }
-    h1, h2 {
-      color: #222;
-    }
-    a {
-      color: #0078d7;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
 
     /* ====== HEADER ====== */
     header {
-      background: #0078d7;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
       color: white;
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+      background-size: cover;
+    }
+
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+
     header h1 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
     }
+
     header p {
-      font-size: 1.2rem;
-      margin-top: .5rem;
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      opacity: 0.9;
+      font-weight: 300;
     }
 
     /* ====== MENÚ ====== */
     nav {
+      background: var(--bg-white);
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .container {
       display: flex;
       justify-content: center;
-      background: #222;
+      flex-wrap: wrap;
     }
+
     nav a {
-      color: white;
-      padding: 1rem;
-      transition: background .3s;
+      color: var(--text-dark);
+      padding: 1.2rem 1.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
     }
+
     nav a:hover {
-      background: #444;
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+      text-decoration: none;
     }
 
     /* ====== SECCIONES ====== */
     section {
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: auto;
+      padding: 4rem 0;
+      background: var(--bg-white);
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
     }
+
+    section:nth-child(even) {
+      background: var(--bg-light);
+    }
+
     section h2 {
-      border-bottom: 2px solid #0078d7;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+      position: relative;
       display: inline-block;
-      margin-bottom: 1rem;
     }
-    ul {
-      margin-left: 1.5rem;
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      border-radius: 2px;
+    }
+
+    section h3 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem 0;
+      color: var(--text-dark);
+    }
+
+    section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ====== ABOUT SECTION ====== */
+    #about p {
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ====== EXPERIENCIA ====== */
+    .experience-item {
+      background: var(--bg-white);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    #experience ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    #experience li {
+      background: var(--bg-white);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--accent-color);
+    }
+
+    /* ====== PROYECTOS ====== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
     }
 
     /* ====== VIDEO ====== */
-    iframe {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    /* ====== CONTACTO ====== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-white);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .contact-item a {
+      font-weight: 500;
+      color: var(--primary-color);
+      font-size: 1.1rem;
     }
 
     /* ====== FOOTER ====== */
     footer {
-      background: #222;
+      background: var(--text-dark);
       color: white;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+
+      section {
+        padding: 3rem 0;
+        margin-bottom: 1rem;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        padding: 1rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .video-container iframe {
+        height: 250px;
+      }
+    }
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      animation: fadeInUp 0.6s ease-out;
     }
   </style>
 </head>
@@ -94,68 +325,119 @@
 
   <!-- ENCABEZADO -->
   <header>
-    <h1>Sergi Salas</h1>
-    <p>Ingeniero Informático | Desarrollador | Apasionado de la tecnología</p>
+    <div class="container">
+      <h1>Sergi Salas</h1>
+      <p>Ingeniero Informático | Desarrollador | Apasionado de la tecnología</p>
+    </div>
   </header>
 
   <!-- MENÚ -->
   <nav>
-    <a href="#about">Sobre mí</a>
-    <a href="#experience">Experiencia</a>
-    <a href="#projects">Proyectos</a>
-    <a href="#video">Video</a>
-    <a href="#contact">Contacto</a>
+    <div class="container">
+      <a href="#about">Sobre mí</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#video">Video</a>
+      <a href="#contact">Contacto</a>
+    </div>
   </nav>
 
   <!-- SOBRE MÍ -->
   <section id="about">
-    <h2>Sobre mí</h2>
-    <p>
-      Soy ingeniero informático con experiencia en desarrollo de software. 
-      Me apasiona crear soluciones prácticas y explorar nuevas tecnologías.
-    </p>
+    <div class="container">
+      <h2>Sobre mí</h2>
+      <p>
+        Soy ingeniero informático con experiencia en desarrollo de software. 
+        Me apasiona crear soluciones prácticas y explorar nuevas tecnologías que 
+        mejoren la vida de las personas y optimicen los procesos empresariales.
+      </p>
+    </div>
   </section>
 
   <!-- EXPERIENCIA -->
   <section id="experience">
-    <h2>Experiencia</h2>
-    <ul>
-      <li><b>Empresa X</b> - Desarrollador Backend (2022 - Actualidad)</li>
-      <li><b>Empresa Y</b> - Prácticas en desarrollo web (2021)</li>
-    </ul>
+    <div class="container">
+      <h2>Experiencia</h2>
+      <ul>
+        <li>
+          <strong>Empresa X</strong> - Desarrollador Backend<br>
+          <em>2022 - Actualidad</em><br>
+          <small>Desarrollo de APIs REST, optimización de bases de datos y implementación de microservicios.</small>
+        </li>
+        <li>
+          <strong>Empresa Y</strong> - Prácticas en desarrollo web<br>
+          <em>2021</em><br>
+          <small>Desarrollo frontend con React y colaboración en proyectos de equipo.</small>
+        </li>
+      </ul>
 
-    <h3>Educación</h3>
-    <p>Grado en Ingeniería Informática - Universidad Z</p>
+      <h3>Educación</h3>
+      <div class="experience-item">
+        <strong>Grado en Ingeniería Informática</strong><br>
+        Universidad Z<br>
+        <em>Especialización en Ingeniería del Software</em>
+      </div>
+    </div>
   </section>
 
   <!-- PROYECTOS -->
   <section id="projects">
-    <h2>Proyectos</h2>
-    <p>Algunos de mis proyectos en GitHub:</p>
-    <ul>
-      <li><a href="https://github.com/sergisalas/proyecto1" target="_blank">Proyecto 1</a></li>
-      <li><a href="https://github.com/sergisalas/proyecto2" target="_blank">Proyecto 2</a></li>
-    </ul>
+    <div class="container">
+      <h2>Proyectos</h2>
+      <p>Algunos de mis proyectos destacados en GitHub:</p>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Proyecto 1</h3>
+          <p>Descripción del proyecto y tecnologías utilizadas.</p>
+          <a href="https://github.com/sergisalas/proyecto1" target="_blank">Ver en GitHub →</a>
+        </div>
+        <div class="project-card">
+          <h3>Proyecto 2</h3>
+          <p>Descripción del proyecto y tecnologías utilizadas.</p>
+          <a href="https://github.com/sergisalas/proyecto2" target="_blank">Ver en GitHub →</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- VIDEO -->
   <section id="video">
-    <h2>Video Presentación</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_VIDEO_ID" 
-            title="Presentación" frameborder="0" allowfullscreen></iframe>
+    <div class="container">
+      <h2>Video Presentación</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" 
+                title="Presentación" allowfullscreen></iframe>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contact">
-    <h2>Contacto</h2>
-    <p>Email: <a href="mailto:tuemail@mail.com">tuemail@mail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/sergisalas" target="_blank">linkedin.com/in/sergisalas</a></p>
-    <p>GitHub: <a href="https://github.com/sergisalas" target="_blank">github.com/sergisalas</a></p>
+    <div class="container">
+      <h2>Contacto</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3>📧 Email</h3>
+          <a href="mailto:tuemail@mail.com">tuemail@mail.com</a>
+        </div>
+        <div class="contact-item">
+          <h3>💼 LinkedIn</h3>
+          <a href="https://linkedin.com/in/sergisalas" target="_blank">linkedin.com/in/sergisalas</a>
+        </div>
+        <div class="contact-item">
+          <h3>🐙 GitHub</h3>
+          <a href="https://github.com/sergisalas" target="_blank">github.com/sergisalas</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Sergi Salas - Portfolio personal</p>
+    <div class="container">
+      <p>© 2025 Sergi Salas - Portfolio personal</p>
+    </div>
   </footer>
 
 </body>
