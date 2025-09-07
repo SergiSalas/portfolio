@@ -4,19 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Sergi Salas</title>
+  <style>
+    /* ====== ESTILOS GENERALES ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #222;
+    }
+    a {
+      color: #0078d7;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ====== HEADER ====== */
+    header {
+      background: #0078d7;
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: .5rem;
+    }
+
+    /* ====== MENÚ ====== */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #222;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      transition: background .3s;
+    }
+    nav a:hover {
+      background: #444;
+    }
+
+    /* ====== SECCIONES ====== */
+    section {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    section h2 {
+      border-bottom: 2px solid #0078d7;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    ul {
+      margin-left: 1.5rem;
+    }
+
+    /* ====== VIDEO ====== */
+    iframe {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hola, soy Sergi Salas 👋</h1>
-  <p>Ingeniero Informático. Aquí comparto mi trayectoria y proyectos.</p>
 
-  <h2>Proyectos en GitHub</h2>
-  <ul>
-    <li><a href="https://github.com/TUUSUARIO/proyecto1" target="_blank">Proyecto 1</a></li>
-    <li><a href="https://github.com/TUUSUARIO/proyecto2" target="_blank">Proyecto 2</a></li>
-  </ul>
+  <!-- ENCABEZADO -->
+  <header>
+    <h1>Sergi Salas</h1>
+    <p>Ingeniero Informático | Desarrollador | Apasionado de la tecnología</p>
+  </header>
 
-  <h2>Video Presentación</h2>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_VIDEO_ID" 
-          title="Presentación" frameborder="0" allowfullscreen></iframe>
+  <!-- MENÚ -->
+  <nav>
+    <a href="#about">Sobre mí</a>
+    <a href="#experience">Experiencia</a>
+    <a href="#projects">Proyectos</a>
+    <a href="#video">Video</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+
+  <!-- SOBRE MÍ -->
+  <section id="about">
+    <h2>Sobre mí</h2>
+    <p>
+      Soy ingeniero informático con experiencia en desarrollo de software. 
+      Me apasiona crear soluciones prácticas y explorar nuevas tecnologías.
+    </p>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experience">
+    <h2>Experiencia</h2>
+    <ul>
+      <li><b>Empresa X</b> - Desarrollador Backend (2022 - Actualidad)</li>
+      <li><b>Empresa Y</b> - Prácticas en desarrollo web (2021)</li>
+    </ul>
+
+    <h3>Educación</h3>
+    <p>Grado en Ingeniería Informática - Universidad Z</p>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="projects">
+    <h2>Proyectos</h2>
+    <p>Algunos de mis proyectos en GitHub:</p>
+    <ul>
+      <li><a href="https://github.com/sergisalas/proyecto1" target="_blank">Proyecto 1</a></li>
+      <li><a href="https://github.com/sergisalas/proyecto2" target="_blank">Proyecto 2</a></li>
+    </ul>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video">
+    <h2>Video Presentación</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_VIDEO_ID" 
+            title="Presentación" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contact">
+    <h2>Contacto</h2>
+    <p>Email: <a href="mailto:tuemail@mail.com">tuemail@mail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/sergisalas" target="_blank">linkedin.com/in/sergisalas</a></p>
+    <p>GitHub: <a href="https://github.com/sergisalas" target="_blank">github.com/sergisalas</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sergi Salas - Portfolio personal</p>
+  </footer>
+
 </body>
 </html>
