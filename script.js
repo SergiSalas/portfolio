@@ -35,7 +35,8 @@ function changeLanguage() {
   
   // ====== SMOOTH SCROLLING PARA NAVEGACIÓN ======
   function initializeSmoothScrolling() {
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    // CAMBIAR este selector
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
