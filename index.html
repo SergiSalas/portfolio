@@ -107,18 +107,42 @@
 
     /* ====== FOTO DE PERFIL ====== */
     .profile-photo {
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      border: 4px solid white;
+      border: 5px solid rgba(255, 255, 255, 0.9);
       margin-bottom: 2rem;
       object-fit: cover;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      object-position: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 
+                  0 0 0 3px rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
     }
 
     .profile-photo:hover {
-      transform: scale(1.05);
+      transform: scale(1.08) translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4),
+                  0 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Efecto de resplandor */
+    .profile-photo::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .profile-photo:hover::before {
+      opacity: 0.3;
     }
 
     header h1 {
@@ -241,16 +265,27 @@
       box-shadow: var(--shadow-lg);
     }
 
+    .company-logo, .education-logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      object-fit: contain;
+      background: var(--bg-white);
+      padding: 8px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .company-logo:hover, .education-logo:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-md);
+    }
+
     .company-logo {
       position: absolute;
       top: 2rem;
       right: 2rem;
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      object-fit: contain;
-      background: var(--bg-light);
-      padding: 8px;
     }
 
     .job-header {
@@ -639,7 +674,6 @@
     </div>
   </section>
 
-  <!-- EXPERIENCIA LABORAL -->
   <section id="experience">
     <div class="container">
       <!-- Español -->
@@ -648,7 +682,7 @@
         
         <div class="experience-section">
           <div class="experience-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/NTT_Data_logo.svg/1200px-NTT_Data_logo.svg.png" alt="NTT DATA" class="company-logo">
+            <img src="images/logos/ntt-data.png" alt="NTT DATA" class="company-logo">
             
             <div class="job-header">
               <div>
@@ -656,7 +690,7 @@
                 <div class="company-name">NTT DATA</div>
                 <div class="job-type">Jornada completa • Híbrido</div>
               </div>
-              <div class="job-duration">Jun 2025 - Actualidad • 4 meses</div>
+              <div class="job-duration">Jun 2024 - Actualidad • 7 meses</div>
             </div>
             
             <div class="job-description">
@@ -674,9 +708,9 @@
               <span class="skill-tag">Metodologías Ágiles</span>
             </div>
           </div>
-
+  
           <div class="experience-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Mercadona_logo.svg/1200px-Mercadona_logo.svg.png" alt="Mercadona" class="company-logo">
+            <img src="images/logos/mercadona.png" alt="Mercadona" class="company-logo">
             
             <div class="job-header">
               <div>
@@ -702,14 +736,14 @@
           </div>
         </div>
       </div>
-
+  
       <!-- English -->
       <div class="lang-content lang-en">
         <h2>Work Experience</h2>
         
         <div class="experience-section">
           <div class="experience-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/NTT_Data_logo.svg/1200px-NTT_Data_logo.svg.png" alt="NTT DATA" class="company-logo">
+            <img src="images/logos/ntt-data.png" alt="NTT DATA" class="company-logo">
             
             <div class="job-header">
               <div>
@@ -717,7 +751,7 @@
                 <div class="company-name">NTT DATA</div>
                 <div class="job-type">Full-time • Hybrid</div>
               </div>
-              <div class="job-duration">Jun 2025 - Present • 4 months</div>
+              <div class="job-duration">Jun 2024 - Present • 7 months</div>
             </div>
             
             <div class="job-description">
@@ -735,9 +769,9 @@
               <span class="skill-tag">Agile Methodologies</span>
             </div>
           </div>
-
+  
           <div class="experience-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Mercadona_logo.svg/1200px-Mercadona_logo.svg.png" alt="Mercadona" class="company-logo">
+            <img src="images/logos/mercadona.png" alt="Mercadona" class="company-logo">
             
             <div class="job-header">
               <div>
@@ -765,34 +799,34 @@
       </div>
     </div>
   </section>
-
-  <!-- EDUCACIÓN -->
+  
+  <!-- EDUCACIÓN - ACTUALIZADA -->
   <section id="education">
     <div class="container">
       <!-- Español -->
       <div class="lang-content lang-es active">
         <h2>Educación</h2>
-
+  
         <div class="education-item">
-          <img src="https://www.tecnocampus.cat/sites/default/files/logo_tcm_2021_color_2.png" alt="TecnoCampus" class="education-logo">
+          <img src="images/logos/tecnocampus.png" alt="TecnoCampus" class="education-logo">
           <div class="education-content">
             <div class="degree-title">Grado en Ingeniería Informática</div>
             <div class="institution">TecnoCampus - UPF</div>
             <div class="education-duration">Sept. 2021 - Jul. 2025</div>
           </div>
         </div>
-
+  
         <div class="education-item">
-          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <img src="images/logos/freta-educacio.png" alt="Freta Educació Maresme" class="education-logo">
           <div class="education-content">
             <div class="degree-title">Bachillerato en Ciencias y Tecnología</div>
             <div class="institution">Freta Educació Maresme</div>
             <div class="education-duration">Sept. 2019 - Jul. 2021</div>
           </div>
         </div>
-
+  
         <div class="education-item">
-          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <img src="images/logos/freta-educacio.png" alt="Freta Educació Maresme" class="education-logo">
           <div class="education-content">
             <div class="degree-title">Educación Secundaria Obligatoria (ESO)</div>
             <div class="institution">Freta Educació Maresme</div>
@@ -800,31 +834,31 @@
           </div>
         </div>
       </div>
-
+  
       <!-- English -->
       <div class="lang-content lang-en">
         <h2>Education</h2>
-
+  
         <div class="education-item">
-          <img src="https://www.tecnocampus.cat/sites/default/files/logo_tcm_2021_color_2.png" alt="TecnoCampus" class="education-logo">
+          <img src="images/logos/tecnocampus.png" alt="TecnoCampus" class="education-logo">
           <div class="education-content">
             <div class="degree-title">Bachelor's Degree in Computer Engineering</div>
             <div class="institution">TecnoCampus - UPF</div>
             <div class="education-duration">Sept. 2021 - Jul. 2025</div>
           </div>
         </div>
-
+  
         <div class="education-item">
-          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <img src="images/logos/freta-educacio.png" alt="Freta Educació Maresme" class="education-logo">
           <div class="education-content">
             <div class="degree-title">High School Diploma in Science and Technology</div>
             <div class="institution">Freta Educació Maresme</div>
             <div class="education-duration">Sept. 2019 - Jul. 2021</div>
           </div>
         </div>
-
+  
         <div class="education-item">
-          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <img src="images/logos/freta-educacio.png" alt="Freta Educació Maresme" class="education-logo">
           <div class="education-content">
             <div class="degree-title">Compulsory Secondary Education (ESO)</div>
             <div class="institution">Freta Educació Maresme</div>
