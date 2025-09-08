@@ -48,6 +48,34 @@
       padding: 0 2rem;
     }
 
+    /* ====== SELECTOR DE IDIOMA ====== */
+    .language-selector {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--bg-white);
+      border-radius: 8px;
+      box-shadow: var(--shadow-md);
+      padding: 0.5rem;
+    }
+
+    .language-selector select {
+      border: none;
+      background: transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .language-selector select:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
     /* ====== HEADER ====== */
     header {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
@@ -195,6 +223,54 @@
       border-left: 4px solid var(--accent-color);
     }
 
+    /* ====== SKILLS ====== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skills-category {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .skills-category h4 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      padding: 0.5rem 0;
+    }
+
+    .skill-bar {
+      width: 100px;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      border-radius: 4px;
+    }
+
+    .skill-progress.advanced { width: 90%; }
+    .skill-progress.intermediate { width: 70%; }
+    .skill-progress.basic { width: 50%; }
+
     /* ====== PROYECTOS ====== */
     .projects-grid {
       display: grid;
@@ -302,6 +378,11 @@
       .video-container iframe {
         height: 250px;
       }
+
+      .language-selector {
+        top: 10px;
+        right: 10px;
+      }
     }
 
     /* ====== ANIMATIONS ====== */
@@ -319,63 +400,362 @@
     section {
       animation: fadeInUp 0.6s ease-out;
     }
+
+    /* Ocultar contenido por idioma */
+    .lang-content {
+      display: none;
+    }
+
+    .lang-content.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
+
+  <!-- SELECTOR DE IDIOMA -->
+  <div class="language-selector">
+    <select id="languageSelector" onchange="changeLanguage()">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+    </select>
+  </div>
 
   <!-- ENCABEZADO -->
   <header>
     <div class="container">
       <h1>Sergi Salas</h1>
-      <p>Ingeniero Informático | Desarrollador | Apasionado de la tecnología</p>
+      <!-- Español -->
+      <p class="lang-content lang-es active">Ingeniero Informático | Desarrollador | Apasionado de la tecnología</p>
+      <!-- English -->
+      <p class="lang-content lang-en">Computer Engineer | Developer | Technology Enthusiast</p>
     </div>
   </header>
 
   <!-- MENÚ -->
   <nav>
     <div class="container">
-      <a href="#about">Sobre mí</a>
-      <a href="#experience">Experiencia</a>
-      <a href="#projects">Proyectos</a>
-      <a href="#video">Video</a>
-      <a href="#contact">Contacto</a>
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <a href="#about">Sobre mí</a>
+        <a href="#experience">Experiencia</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#video">Video</a>
+        <a href="#contact">Contacto</a>
+      </div>
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#video">Video</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </nav>
 
   <!-- SOBRE MÍ -->
   <section id="about">
     <div class="container">
-      <h2>Sobre mí</h2>
-      <p>
-        Soy ingeniero informático con experiencia en desarrollo de software. 
-        Me apasiona crear soluciones prácticas y explorar nuevas tecnologías que 
-        mejoren la vida de las personas y optimicen los procesos empresariales.
-      </p>
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <h2>Sobre mí</h2>
+        <p>
+          Me considero una persona dinámica, seria y responsable, con capacidad para trabajar en equipo y adaptarme fácilmente. 
+          Como Ingeniero Informático especializado en Gestión y Sistemas de Información, tengo experiencia trabajando 
+          como cajero en Mercadona durante dos veranos con contrato temporal.
+        </p>
+      </div>
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <h2>About Me</h2>
+        <p>
+          I consider myself a dynamic, serious, and responsible person, with the ability to work in a team and adapt easily. 
+          As a Computer Engineer specializing in Management and Information Systems, I have experience working 
+          as a cashier at Mercadona for two summers under temporary contracts.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- EXPERIENCIA -->
   <section id="experience">
     <div class="container">
-      <h2>Experiencia</h2>
-      <ul>
-        <li>
-          <strong>Empresa X</strong> - Desarrollador Backend<br>
-          <em>2022 - Actualidad</em><br>
-          <small>Desarrollo de APIs REST, optimización de bases de datos y implementación de microservicios.</small>
-        </li>
-        <li>
-          <strong>Empresa Y</strong> - Prácticas en desarrollo web<br>
-          <em>2021</em><br>
-          <small>Desarrollo frontend con React y colaboración en proyectos de equipo.</small>
-        </li>
-      </ul>
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <h2>Experiencia</h2>
+        <ul>
+          <li>
+            <strong>Mercadona</strong> - Cajero<br>
+            <em>2022 - 2024</em><br>
+            <small>Trabajé como cajero durante dos veranos con contrato temporal.</small>
+          </li>
+        </ul>
 
-      <h3>Educación</h3>
-      <div class="experience-item">
-        <strong>Grado en Ingeniería Informática</strong><br>
-        Universidad Z<br>
-        <em>Especialización en Ingeniería del Software</em>
+        <h3>Educación</h3>
+        <div class="experience-item">
+          <strong>Grado en Ingeniería Informática</strong><br>
+          Especialización en Gestión y Sistemas de Información<br>
+          UPF (Tecnocampus)<br>
+          <em>2021 - Actualidad</em>
+        </div>
+        
+        <div class="experience-item">
+          <strong>Bachillerato en Ciencias y Tecnología</strong><br>
+          Esc. Freta<br>
+          <em>2019 - 2021</em>
+        </div>
+
+        <div class="experience-item">
+          <strong>Educación Secundaria Obligatoria</strong><br>
+          Esc. Freta<br>
+          <em>2015 - 2019</em>
+        </div>
+
+        <div class="experience-item">
+          <strong>Carnet de Conducir B</strong><br>
+          <em>Obtenido</em>
+        </div>
+      </div>
+
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <h2>Experience</h2>
+        <ul>
+          <li>
+            <strong>Mercadona</strong> - Cashier<br>
+            <em>2022 - 2024</em><br>
+            <small>I worked as a cashier for two summers under temporary contracts.</small>
+          </li>
+        </ul>
+
+        <h3>Education</h3>
+        <div class="experience-item">
+          <strong>Bachelor's Degree in Computer Engineering</strong><br>
+          Specializing in Management and Information Systems<br>
+          UPF (Tecnocampus)<br>
+          <em>2021 - Present</em>
+        </div>
+        
+        <div class="experience-item">
+          <strong>High School Diploma in Science and Technology</strong><br>
+          Esc. Freta<br>
+          <em>2019 - 2021</em>
+        </div>
+
+        <div class="experience-item">
+          <strong>Compulsory Secondary Education</strong><br>
+          Esc. Freta<br>
+          <em>2015 - 2019</em>
+        </div>
+
+        <div class="experience-item">
+          <strong>Driver's License B</strong><br>
+          <em>Obtained</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="skills">
+    <div class="container">
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <h2>Habilidades</h2>
+        <div class="skills-grid">
+          <div class="skills-category">
+            <h4>🔧 Lenguajes de Programación</h4>
+            <div class="skill-item">
+              <span>Java</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Python</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>C</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Kotlin</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🗄️ Bases de Datos</h4>
+            <div class="skill-item">
+              <span>MySQL</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Oracle</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>MongoDB</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>⚙️ Herramientas y Tecnologías</h4>
+            <div class="skill-item">
+              <span>Visual Studio Code</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>IntelliJ IDEA</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Git</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Docker</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🌐 Desarrollo Web</h4>
+            <div class="skill-item">
+              <span>HTML</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>CSS</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Spring Framework</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>RESTful APIs</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🗣️ Idiomas</h4>
+            <div class="skill-item">
+              <span>Español (Nativo)</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Catalán (Nativo)</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Inglés (B2)</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skills-category">
+            <h4>🔧 Programming Languages</h4>
+            <div class="skill-item">
+              <span>Java</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Python</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>C</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Kotlin</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🗄️ Databases</h4>
+            <div class="skill-item">
+              <span>MySQL</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Oracle</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>MongoDB</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>⚙️ Tools and Technologies</h4>
+            <div class="skill-item">
+              <span>Visual Studio Code</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>IntelliJ IDEA</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Git</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Docker</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🌐 Web Development</h4>
+            <div class="skill-item">
+              <span>HTML</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>CSS</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Spring Framework</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>RESTful APIs</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🗣️ Languages</h4>
+            <div class="skill-item">
+              <span>Spanish (Native)</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Catalan (Native)</span>
+              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>English (B2)</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -383,19 +763,51 @@
   <!-- PROYECTOS -->
   <section id="projects">
     <div class="container">
-      <h2>Proyectos</h2>
-      <p>Algunos de mis proyectos destacados en GitHub:</p>
-      
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3>Proyecto 1</h3>
-          <p>Descripción del proyecto y tecnologías utilizadas.</p>
-          <a href="https://github.com/sergisalas/proyecto1" target="_blank">Ver en GitHub →</a>
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <h2>Proyectos</h2>
+        <p>Algunos de mis proyectos destacados en GitHub:</p>
+        
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Sistema de Gestión Universitaria</h3>
+            <p>Aplicación web desarrollada con Spring Framework y MySQL para la gestión de estudiantes y cursos universitarios.</p>
+            <a href="https://github.com/sergisalas/gestion-universitaria" target="_blank">Ver en GitHub →</a>
+          </div>
+          <div class="project-card">
+            <h3>API REST con Java</h3>
+            <p>API RESTful desarrollada en Java con Spring Boot para un sistema de inventario, incluyendo autenticación JWT.</p>
+            <a href="https://github.com/sergisalas/api-inventario" target="_blank">Ver en GitHub →</a>
+          </div>
+          <div class="project-card">
+            <h3>Aplicación Móvil con Kotlin</h3>
+            <p>App Android nativa desarrollada en Kotlin para la gestión de tareas personales con base de datos local.</p>
+            <a href="https://github.com/sergisalas/taskmanager-android" target="_blank">Ver en GitHub →</a>
+          </div>
         </div>
-        <div class="project-card">
-          <h3>Proyecto 2</h3>
-          <p>Descripción del proyecto y tecnologías utilizadas.</p>
-          <a href="https://github.com/sergisalas/proyecto2" target="_blank">Ver en GitHub →</a>
+      </div>
+
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <h2>Projects</h2>
+        <p>Some of my featured projects on GitHub:</p>
+        
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>University Management System</h3>
+            <p>Web application developed with Spring Framework and MySQL for managing university students and courses.</p>
+            <a href="https://github.com/sergisalas/gestion-universitaria" target="_blank">View on GitHub →</a>
+          </div>
+          <div class="project-card">
+            <h3>REST API with Java</h3>
+            <p>RESTful API developed in Java with Spring Boot for an inventory system, including JWT authentication.</p>
+            <a href="https://github.com/sergisalas/api-inventario" target="_blank">View on GitHub →</a>
+          </div>
+          <div class="project-card">
+            <h3>Mobile App with Kotlin</h3>
+            <p>Native Android app developed in Kotlin for personal task management with local database.</p>
+            <a href="https://github.com/sergisalas/taskmanager-android" target="_blank">View on GitHub →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -404,10 +816,22 @@
   <!-- VIDEO -->
   <section id="video">
     <div class="container">
-      <h2>Video Presentación</h2>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" 
-                title="Presentación" allowfullscreen></iframe>
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <h2>Video Presentación</h2>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" 
+                  title="Presentación" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <h2>Presentation Video</h2>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" 
+                  title="Presentation" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -415,19 +839,57 @@
   <!-- CONTACTO -->
   <section id="contact">
     <div class="container">
-      <h2>Contacto</h2>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <h3>📧 Email</h3>
-          <a href="mailto:tuemail@mail.com">tuemail@mail.com</a>
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <h2>Contacto</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h3>📧 Email</h3>
+            <a href="mailto:sergisalas2003@gmail.com">sergisalas2003@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <h3>💼 LinkedIn</h3>
+            <a href="https://linkedin.com/in/sergisalas" target="_blank">linkedin.com/in/sergisalas</a>
+          </div>
+          <div class="contact-item">
+            <h3>🐙 GitHub</h3>
+            <a href="https://github.com/sergisalas" target="_blank">github.com/sergisalas</a>
+          </div>
+          <div class="contact-item">
+            <h3>📍 Ubicación</h3>
+            <p>Francesc Castells 23<br>08370 Calella</p>
+          </div>
+          <div class="contact-item">
+            <h3>📞 Teléfono</h3>
+            <a href="tel:+34616423763">+34 616 423 763</a>
+          </div>
         </div>
-        <div class="contact-item">
-          <h3>💼 LinkedIn</h3>
-          <a href="https://linkedin.com/in/sergisalas" target="_blank">linkedin.com/in/sergisalas</a>
-        </div>
-        <div class="contact-item">
-          <h3>🐙 GitHub</h3>
-          <a href="https://github.com/sergisalas" target="_blank">github.com/sergisalas</a>
+      </div>
+
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h3>📧 Email</h3>
+            <a href="mailto:sergisalas2003@gmail.com">sergisalas2003@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <h3>💼 LinkedIn</h3>
+            <a href="https://linkedin.com/in/sergisalas" target="_blank">linkedin.com/in/sergisalas</a>
+          </div>
+          <div class="contact-item">
+            <h3>🐙 GitHub</h3>
+            <a href="https://github.com/sergisalas" target="_blank">github.com/sergisalas</a>
+          </div>
+          <div class="contact-item">
+            <h3>📍 Location</h3>
+            <p>Francesc Castells 23<br>08370 Calella</p>
+          </div>
+          <div class="contact-item">
+            <h3>📞 Phone</h3>
+            <a href="tel:+34616423763">+34 616 423 763</a>
+          </div>
         </div>
       </div>
     </div>
@@ -436,9 +898,47 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© 2025 Sergi Salas - Portfolio personal</p>
+      <!-- Español -->
+      <p class="lang-content lang-es active">© 2025 Sergi Salas - Portfolio personal</p>
+      <!-- English -->
+      <p class="lang-content lang-en">© 2025 Sergi Salas - Personal Portfolio</p>
     </div>
   </footer>
+
+  <script>
+    function changeLanguage() {
+      const selector = document.getElementById('languageSelector');
+      const selectedLang = selector.value;
+      
+      // Ocultar todos los contenidos
+      const allLangContent = document.querySelectorAll('.lang-content');
+      allLangContent.forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Mostrar contenido del idioma seleccionado
+      const selectedContent = document.querySelectorAll('.lang-' + selectedLang);
+      selectedContent.forEach(content => {
+        content.classList.add('active');
+      });
+      
+      // Cambiar el atributo lang del HTML
+      document.documentElement.lang = selectedLang;
+      
+      // Guardar preferencia en localStorage
+      localStorage.setItem('preferredLanguage', selectedLang);
+    }
+
+    // Cargar idioma preferido al inicializar la página
+    window.addEventListener('load', function() {
+      const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+      document.getElementById('languageSelector').value = savedLang;
+      
+      if (savedLang !== 'es') {
+        changeLanguage();
+      }
+    });
+  </script>
 
 </body>
 </html>
