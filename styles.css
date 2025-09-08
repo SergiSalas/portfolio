@@ -174,20 +174,6 @@ header::before {
   opacity: 0.3;
 }
 
-header h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: white;
-}
-
-header p {
-  font-size: 1.3rem;
-  margin-top: 1rem;
-  opacity: 0.9;
-  font-weight: 300;
-}
-
 /* ====== MENÚ ====== */
 nav {
   background: var(--bg-white);
