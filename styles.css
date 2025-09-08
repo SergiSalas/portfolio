@@ -260,6 +260,7 @@ section p {
 }
 
 /* ====== EXPERIENCIA LABORAL ====== */
+/* ====== EXPERIENCIA LABORAL ====== */
 .experience-section {
   margin-bottom: 3rem;
 }
@@ -280,7 +281,7 @@ section p {
   box-shadow: var(--shadow-lg);
 }
 
-.company-logo, .education-logo {
+.company-logo {
   width: 70px;
   height: 70px;
   border-radius: 12px;
@@ -290,54 +291,57 @@ section p {
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
-}
-
-.company-logo:hover, .education-logo:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-md);
-}
-
-.company-logo {
   position: absolute;
   top: 2rem;
   right: 2rem;
 }
 
-.job-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+.company-logo:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
 }
 
-.job-title {
+.experience-content {
+  margin-right: 90px; /* Espacio para el logo */
+}
+
+.experience-item h3 {
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
+  border: none;
+  margin-top: 0;
 }
 
 .company-name {
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--text-dark);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.8rem;
 }
 
-.job-duration {
+.period {
   font-size: 0.95rem;
   color: var(--text-light);
   background: var(--bg-light);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-weight: 500;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .job-type {
   font-size: 0.9rem;
   color: var(--accent-color);
   font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.job-location {
+  font-size: 0.9rem;
+  color: var(--text-light);
   margin-bottom: 1rem;
 }
 
@@ -360,6 +364,21 @@ section p {
   border-radius: 15px;
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .experience-content {
+    margin-right: 0;
+  }
+  
+  .company-logo {
+    position: static;
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* ====== EDUCACIÓN ====== */
