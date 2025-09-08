@@ -100,6 +100,25 @@
     header .container {
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ====== FOTO DE PERFIL ====== */
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 2rem;
+      object-fit: cover;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
     }
 
     header h1 {
@@ -179,9 +198,11 @@
     }
 
     section h3 {
-      font-size: 1.5rem;
-      margin: 2rem 0 1rem 0;
+      font-size: 1.8rem;
+      margin: 3rem 0 2rem 0;
       color: var(--text-dark);
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
     }
 
     section p {
@@ -199,28 +220,141 @@
       margin: 0 auto;
     }
 
-    /* ====== EXPERIENCIA ====== */
+    /* ====== EXPERIENCIA LABORAL ====== */
+    .experience-section {
+      margin-bottom: 3rem;
+    }
+
     .experience-item {
+      background: var(--bg-white);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--primary-color);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .experience-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .company-logo {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: var(--bg-light);
+      padding: 8px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .job-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .company-name {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .job-duration {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      background: var(--bg-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .job-type {
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .job-description {
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .job-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* ====== EDUCACIÓN ====== */
+    .education-item {
       background: var(--bg-white);
       padding: 2rem;
       margin-bottom: 1.5rem;
       border-radius: 12px;
       box-shadow: var(--shadow-sm);
-      border-left: 4px solid var(--primary-color);
-    }
-
-    #experience ul {
-      list-style: none;
-      margin-left: 0;
-    }
-
-    #experience li {
-      background: var(--bg-white);
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: var(--shadow-sm);
       border-left: 4px solid var(--accent-color);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .education-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: var(--bg-light);
+      padding: 8px;
+      flex-shrink: 0;
+    }
+
+    .education-content {
+      flex: 1;
+    }
+
+    .degree-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .institution {
+      color: var(--accent-color);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .education-duration {
+      color: var(--text-light);
+      font-size: 0.9rem;
     }
 
     /* ====== SKILLS ====== */
@@ -361,6 +495,11 @@
         font-size: 1.1rem;
       }
 
+      .profile-photo {
+        width: 120px;
+        height: 120px;
+      }
+
       section {
         padding: 3rem 0;
         margin-bottom: 1rem;
@@ -382,6 +521,22 @@
       .language-selector {
         top: 10px;
         right: 10px;
+      }
+
+      .job-header {
+        flex-direction: column;
+      }
+
+      .company-logo {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 1rem;
+      }
+
+      .education-item {
+        flex-direction: column;
+        text-align: center;
       }
     }
 
@@ -424,11 +579,13 @@
   <!-- ENCABEZADO -->
   <header>
     <div class="container">
+      <!-- Foto de perfil - Cambia la ruta por tu imagen -->
+      <img src="images/perfil.jpg" alt="Sergi Salas" class="profile-photo">
       <h1>Sergi Salas</h1>
       <!-- Español -->
-      <p class="lang-content lang-es active">Ingeniero Informático | Desarrollador | Apasionado de la tecnología</p>
+      <p class="lang-content lang-es active">Ingeniero de Software | Desarrollador Java | Especialista en Microservicios</p>
       <!-- English -->
-      <p class="lang-content lang-en">Computer Engineer | Developer | Technology Enthusiast</p>
+      <p class="lang-content lang-en">Software Engineer | Java Developer | Microservices Specialist</p>
     </div>
   </header>
 
@@ -439,18 +596,18 @@
       <div class="lang-content lang-es active">
         <a href="#about">Sobre mí</a>
         <a href="#experience">Experiencia</a>
+        <a href="#education">Educación</a>
         <a href="#skills">Habilidades</a>
         <a href="#projects">Proyectos</a>
-        <a href="#video">Video</a>
         <a href="#contact">Contacto</a>
       </div>
       <!-- English -->
       <div class="lang-content lang-en">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#video">Video</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -463,97 +620,216 @@
       <div class="lang-content lang-es active">
         <h2>Sobre mí</h2>
         <p>
-          Me considero una persona dinámica, seria y responsable, con capacidad para trabajar en equipo y adaptarme fácilmente. 
-          Como Ingeniero Informático especializado en Gestión y Sistemas de Información, tengo experiencia trabajando 
-          como cajero en Mercadona durante dos veranos con contrato temporal.
+          Soy un Ingeniero de Software con experiencia en NTT DATA, especializado en el desarrollo de soluciones tecnológicas 
+          para el sector bancario. Me apasiona crear aplicaciones robustas y escalables, trabajando con tecnologías como Java, 
+          microservicios y metodologías ágiles. Mi enfoque se centra en la calidad del código, el trabajo en equipo y la 
+          resolución de problemas complejos en entornos corporativos.
         </p>
       </div>
       <!-- English -->
       <div class="lang-content lang-en">
         <h2>About Me</h2>
         <p>
-          I consider myself a dynamic, serious, and responsible person, with the ability to work in a team and adapt easily. 
-          As a Computer Engineer specializing in Management and Information Systems, I have experience working 
-          as a cashier at Mercadona for two summers under temporary contracts.
+          I am a Software Engineer with experience at NTT DATA, specialized in developing technological solutions 
+          for the banking sector. I'm passionate about creating robust and scalable applications, working with technologies 
+          like Java, microservices, and agile methodologies. My focus is on code quality, teamwork, and solving 
+          complex problems in corporate environments.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- EXPERIENCIA -->
+  <!-- EXPERIENCIA LABORAL -->
   <section id="experience">
     <div class="container">
       <!-- Español -->
       <div class="lang-content lang-es active">
-        <h2>Experiencia</h2>
-        <ul>
-          <li>
-            <strong>Mercadona</strong> - Cajero<br>
-            <em>2022 - 2024</em><br>
-            <small>Trabajé como cajero durante dos veranos con contrato temporal.</small>
-          </li>
-        </ul>
-
-        <h3>Educación</h3>
-        <div class="experience-item">
-          <strong>Grado en Ingeniería Informática</strong><br>
-          Especialización en Gestión y Sistemas de Información<br>
-          UPF (Tecnocampus)<br>
-          <em>2021 - Actualidad</em>
-        </div>
+        <h2>Experiencia Laboral</h2>
         
-        <div class="experience-item">
-          <strong>Bachillerato en Ciencias y Tecnología</strong><br>
-          Esc. Freta<br>
-          <em>2019 - 2021</em>
-        </div>
+        <div class="experience-section">
+          <div class="experience-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/NTT_Data_logo.svg/1200px-NTT_Data_logo.svg.png" alt="NTT DATA" class="company-logo">
+            
+            <div class="job-header">
+              <div>
+                <div class="job-title">Ingeniero de Software Junior</div>
+                <div class="company-name">NTT DATA</div>
+                <div class="job-type">Jornada completa • Híbrido</div>
+              </div>
+              <div class="job-duration">Jun 2025 - Actualidad • 4 meses</div>
+            </div>
+            
+            <div class="job-description">
+              Prácticas en NTT Data Spain como parte del equipo de desarrollo de soluciones tecnológicas para la banca. 
+              Participación en el análisis de requisitos, definición de endpoints y documentación de APIs. Esta experiencia me 
+              ha permitido crecer tanto a nivel técnico como profesional, trabajando en equipos multidisciplinares y 
+              enfrentando retos reales del sector IT.
+            </div>
+            
+            <div class="job-skills">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Microservicios</span>
+              <span class="skill-tag">Spring Framework</span>
+              <span class="skill-tag">APIs REST</span>
+              <span class="skill-tag">Metodologías Ágiles</span>
+            </div>
+          </div>
 
-        <div class="experience-item">
-          <strong>Educación Secundaria Obligatoria</strong><br>
-          Esc. Freta<br>
-          <em>2015 - 2019</em>
-        </div>
-
-        <div class="experience-item">
-          <strong>Carnet de Conducir B</strong><br>
-          <em>Obtenido</em>
+          <div class="experience-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Mercadona_logo.svg/1200px-Mercadona_logo.svg.png" alt="Mercadona" class="company-logo">
+            
+            <div class="job-header">
+              <div>
+                <div class="job-title">Cajero</div>
+                <div class="company-name">Mercadona</div>
+                <div class="job-type">Contrato temporal • Presencial</div>
+              </div>
+              <div class="job-duration">Ago 2021 - Ago 2024 • 3 años</div>
+            </div>
+            
+            <div class="job-description">
+              Experiencia laboral durante los veranos mientras estudiaba la carrera. Desarrollo de habilidades de 
+              atención al cliente, trabajo en equipo bajo presión y gestión eficiente del tiempo. Esta experiencia 
+              me ha aportado una base sólida en competencias transversales muy valoradas en el mundo profesional.
+            </div>
+            
+            <div class="job-skills">
+              <span class="skill-tag">Atención al Cliente</span>
+              <span class="skill-tag">Trabajo en Equipo</span>
+              <span class="skill-tag">Gestión del Tiempo</span>
+              <span class="skill-tag">Comunicación</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- English -->
       <div class="lang-content lang-en">
-        <h2>Experience</h2>
-        <ul>
-          <li>
-            <strong>Mercadona</strong> - Cashier<br>
-            <em>2022 - 2024</em><br>
-            <small>I worked as a cashier for two summers under temporary contracts.</small>
-          </li>
-        </ul>
-
-        <h3>Education</h3>
-        <div class="experience-item">
-          <strong>Bachelor's Degree in Computer Engineering</strong><br>
-          Specializing in Management and Information Systems<br>
-          UPF (Tecnocampus)<br>
-          <em>2021 - Present</em>
-        </div>
+        <h2>Work Experience</h2>
         
-        <div class="experience-item">
-          <strong>High School Diploma in Science and Technology</strong><br>
-          Esc. Freta<br>
-          <em>2019 - 2021</em>
+        <div class="experience-section">
+          <div class="experience-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/NTT_Data_logo.svg/1200px-NTT_Data_logo.svg.png" alt="NTT DATA" class="company-logo">
+            
+            <div class="job-header">
+              <div>
+                <div class="job-title">Junior Software Engineer</div>
+                <div class="company-name">NTT DATA</div>
+                <div class="job-type">Full-time • Hybrid</div>
+              </div>
+              <div class="job-duration">Jun 2025 - Present • 4 months</div>
+            </div>
+            
+            <div class="job-description">
+              Internship at NTT Data Spain as part of the development team for technological solutions in banking. 
+              Participation in requirements analysis, endpoint definition, and API documentation. This experience has 
+              allowed me to grow both technically and professionally, working in multidisciplinary teams and 
+              facing real challenges in the IT sector.
+            </div>
+            
+            <div class="job-skills">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Microservices</span>
+              <span class="skill-tag">Spring Framework</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">Agile Methodologies</span>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Mercadona_logo.svg/1200px-Mercadona_logo.svg.png" alt="Mercadona" class="company-logo">
+            
+            <div class="job-header">
+              <div>
+                <div class="job-title">Cashier</div>
+                <div class="company-name">Mercadona</div>
+                <div class="job-type">Temporary contract • On-site</div>
+              </div>
+              <div class="job-duration">Aug 2021 - Aug 2024 • 3 years</div>
+            </div>
+            
+            <div class="job-description">
+              Work experience during summers while studying. Development of customer service skills, teamwork 
+              under pressure, and efficient time management. This experience has provided me with a solid 
+              foundation in soft skills highly valued in the professional world.
+            </div>
+            
+            <div class="job-skills">
+              <span class="skill-tag">Customer Service</span>
+              <span class="skill-tag">Teamwork</span>
+              <span class="skill-tag">Time Management</span>
+              <span class="skill-tag">Communication</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCACIÓN -->
+  <section id="education">
+    <div class="container">
+      <!-- Español -->
+      <div class="lang-content lang-es active">
+        <h2>Educación</h2>
+
+        <div class="education-item">
+          <img src="https://www.tecnocampus.cat/sites/default/files/logo_tcm_2021_color_2.png" alt="TecnoCampus" class="education-logo">
+          <div class="education-content">
+            <div class="degree-title">Grado en Ingeniería Informática</div>
+            <div class="institution">TecnoCampus - UPF</div>
+            <div class="education-duration">Sept. 2021 - Jul. 2025</div>
+          </div>
         </div>
 
-        <div class="experience-item">
-          <strong>Compulsory Secondary Education</strong><br>
-          Esc. Freta<br>
-          <em>2015 - 2019</em>
+        <div class="education-item">
+          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <div class="education-content">
+            <div class="degree-title">Bachillerato en Ciencias y Tecnología</div>
+            <div class="institution">Freta Educació Maresme</div>
+            <div class="education-duration">Sept. 2019 - Jul. 2021</div>
+          </div>
         </div>
 
-        <div class="experience-item">
-          <strong>Driver's License B</strong><br>
-          <em>Obtained</em>
+        <div class="education-item">
+          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <div class="education-content">
+            <div class="degree-title">Educación Secundaria Obligatoria (ESO)</div>
+            <div class="institution">Freta Educació Maresme</div>
+            <div class="education-duration">Sept. 2015 - Jul. 2019</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- English -->
+      <div class="lang-content lang-en">
+        <h2>Education</h2>
+
+        <div class="education-item">
+          <img src="https://www.tecnocampus.cat/sites/default/files/logo_tcm_2021_color_2.png" alt="TecnoCampus" class="education-logo">
+          <div class="education-content">
+            <div class="degree-title">Bachelor's Degree in Computer Engineering</div>
+            <div class="institution">TecnoCampus - UPF</div>
+            <div class="education-duration">Sept. 2021 - Jul. 2025</div>
+          </div>
+        </div>
+
+        <div class="education-item">
+          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <div class="education-content">
+            <div class="degree-title">High School Diploma in Science and Technology</div>
+            <div class="institution">Freta Educació Maresme</div>
+            <div class="education-duration">Sept. 2019 - Jul. 2021</div>
+          </div>
+        </div>
+
+        <div class="education-item">
+          <img src="https://via.placeholder.com/60x60/4f46e5/white?text=FB" alt="Freta Educació Maresme" class="education-logo">
+          <div class="education-content">
+            <div class="degree-title">Compulsory Secondary Education (ESO)</div>
+            <div class="institution">Freta Educació Maresme</div>
+            <div class="education-duration">Sept. 2015 - Jul. 2019</div>
+          </div>
         </div>
       </div>
     </div>
@@ -567,7 +843,7 @@
         <h2>Habilidades</h2>
         <div class="skills-grid">
           <div class="skills-category">
-            <h4>🔧 Lenguajes de Programación</h4>
+            <h4>💻 Lenguajes de Programación</h4>
             <div class="skill-item">
               <span>Java</span>
               <div class="skill-bar"><div class="skill-progress advanced"></div></div>
@@ -582,6 +858,26 @@
             </div>
             <div class="skill-item">
               <span>Kotlin</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🏗️ Frameworks y Tecnologías</h4>
+            <div class="skill-item">
+              <span>Spring Framework</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Microservicios</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>RESTful APIs</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Docker</span>
               <div class="skill-bar"><div class="skill-progress basic"></div></div>
             </div>
           </div>
@@ -603,13 +899,13 @@
           </div>
 
           <div class="skills-category">
-            <h4>⚙️ Herramientas y Tecnologías</h4>
+            <h4>🛠️ Herramientas de Desarrollo</h4>
             <div class="skill-item">
-              <span>Visual Studio Code</span>
+              <span>IntelliJ IDEA</span>
               <div class="skill-bar"><div class="skill-progress advanced"></div></div>
             </div>
             <div class="skill-item">
-              <span>IntelliJ IDEA</span>
+              <span>Visual Studio Code</span>
               <div class="skill-bar"><div class="skill-progress advanced"></div></div>
             </div>
             <div class="skill-item">
@@ -617,27 +913,7 @@
               <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
             </div>
             <div class="skill-item">
-              <span>Docker</span>
-              <div class="skill-bar"><div class="skill-progress basic"></div></div>
-            </div>
-          </div>
-
-          <div class="skills-category">
-            <h4>🌐 Desarrollo Web</h4>
-            <div class="skill-item">
-              <span>HTML</span>
-              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
-            </div>
-            <div class="skill-item">
-              <span>CSS</span>
-              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
-            </div>
-            <div class="skill-item">
-              <span>Spring Framework</span>
-              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
-            </div>
-            <div class="skill-item">
-              <span>RESTful APIs</span>
+              <span>Eclipse</span>
               <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
             </div>
           </div>
@@ -665,7 +941,7 @@
         <h2>Skills</h2>
         <div class="skills-grid">
           <div class="skills-category">
-            <h4>🔧 Programming Languages</h4>
+            <h4>💻 Programming Languages</h4>
             <div class="skill-item">
               <span>Java</span>
               <div class="skill-bar"><div class="skill-progress advanced"></div></div>
@@ -680,6 +956,26 @@
             </div>
             <div class="skill-item">
               <span>Kotlin</span>
+              <div class="skill-bar"><div class="skill-progress basic"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>🏗️ Frameworks & Technologies</h4>
+            <div class="skill-item">
+              <span>Spring Framework</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Microservices</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>RESTful APIs</span>
+              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
+            </div>
+            <div class="skill-item">
+              <span>Docker</span>
               <div class="skill-bar"><div class="skill-progress basic"></div></div>
             </div>
           </div>
@@ -701,13 +997,13 @@
           </div>
 
           <div class="skills-category">
-            <h4>⚙️ Tools and Technologies</h4>
+            <h4>🛠️ Development Tools</h4>
             <div class="skill-item">
-              <span>Visual Studio Code</span>
+              <span>IntelliJ IDEA</span>
               <div class="skill-bar"><div class="skill-progress advanced"></div></div>
             </div>
             <div class="skill-item">
-              <span>IntelliJ IDEA</span>
+              <span>Visual Studio Code</span>
               <div class="skill-bar"><div class="skill-progress advanced"></div></div>
             </div>
             <div class="skill-item">
@@ -715,27 +1011,7 @@
               <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
             </div>
             <div class="skill-item">
-              <span>Docker</span>
-              <div class="skill-bar"><div class="skill-progress basic"></div></div>
-            </div>
-          </div>
-
-          <div class="skills-category">
-            <h4>🌐 Web Development</h4>
-            <div class="skill-item">
-              <span>HTML</span>
-              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
-            </div>
-            <div class="skill-item">
-              <span>CSS</span>
-              <div class="skill-bar"><div class="skill-progress advanced"></div></div>
-            </div>
-            <div class="skill-item">
-              <span>Spring Framework</span>
-              <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
-            </div>
-            <div class="skill-item">
-              <span>RESTful APIs</span>
+              <span>Eclipse</span>
               <div class="skill-bar"><div class="skill-progress intermediate"></div></div>
             </div>
           </div>
@@ -766,23 +1042,23 @@
       <!-- Español -->
       <div class="lang-content lang-es active">
         <h2>Proyectos</h2>
-        <p>Algunos de mis proyectos destacados en GitHub:</p>
+        <p>Algunos de mis proyectos destacados desarrollados durante mi formación:</p>
         
         <div class="projects-grid">
           <div class="project-card">
-            <h3>Sistema de Gestión Universitaria</h3>
-            <p>Aplicación web desarrollada con Spring Framework y MySQL para la gestión de estudiantes y cursos universitarios.</p>
-            <a href="https://github.com/sergisalas/gestion-universitaria" target="_blank">Ver en GitHub →</a>
+            <h3>🏦 Sistema Bancario con Microservicios</h3>
+            <p>Aplicación desarrollada con Spring Boot y arquitectura de microservicios, simulando operaciones bancarias básicas con seguridad JWT.</p>
+            <a href="#" target="_blank">Ver en GitHub →</a>
           </div>
           <div class="project-card">
-            <h3>API REST con Java</h3>
-            <p>API RESTful desarrollada en Java con Spring Boot para un sistema de inventario, incluyendo autenticación JWT.</p>
-            <a href="https://github.com/sergisalas/api-inventario" target="_blank">Ver en GitHub →</a>
+            <h3>📱 App de Gestión Universitaria</h3>
+            <p>Aplicación móvil desarrollada en Kotlin para Android, permitiendo a estudiantes gestionar horarios, notas y asignaturas.</p>
+            <a href="#" target="_blank">Ver en GitHub →</a>
           </div>
           <div class="project-card">
-            <h3>Aplicación Móvil con Kotlin</h3>
-            <p>App Android nativa desarrollada en Kotlin para la gestión de tareas personales con base de datos local.</p>
-            <a href="https://github.com/sergisalas/taskmanager-android" target="_blank">Ver en GitHub →</a>
+            <h3>🔍 API de Análisis de Datos</h3>
+            <p>API RESTful desarrollada en Python con Flask para análisis de datos académicos, incluyendo visualizaciones y reportes.</p>
+            <a href="#" target="_blank">Ver en GitHub →</a>
           </div>
         </div>
       </div>
@@ -790,47 +1066,24 @@
       <!-- English -->
       <div class="lang-content lang-en">
         <h2>Projects</h2>
-        <p>Some of my featured projects on GitHub:</p>
+        <p>Some of my featured projects developed during my studies:</p>
         
         <div class="projects-grid">
           <div class="project-card">
-            <h3>University Management System</h3>
-            <p>Web application developed with Spring Framework and MySQL for managing university students and courses.</p>
-            <a href="https://github.com/sergisalas/gestion-universitaria" target="_blank">View on GitHub →</a>
+            <h3>🏦 Banking System with Microservices</h3>
+            <p>Application developed with Spring Boot and microservices architecture, simulating basic banking operations with JWT security.</p>
+            <a href="#" target="_blank">View on GitHub →</a>
           </div>
           <div class="project-card">
-            <h3>REST API with Java</h3>
-            <p>RESTful API developed in Java with Spring Boot for an inventory system, including JWT authentication.</p>
-            <a href="https://github.com/sergisalas/api-inventario" target="_blank">View on GitHub →</a>
+            <h3>📱 University Management App</h3>
+            <p>Mobile application developed in Kotlin for Android, allowing students to manage schedules, grades, and subjects.</p>
+            <a href="#" target="_blank">View on GitHub →</a>
           </div>
           <div class="project-card">
-            <h3>Mobile App with Kotlin</h3>
-            <p>Native Android app developed in Kotlin for personal task management with local database.</p>
-            <a href="https://github.com/sergisalas/taskmanager-android" target="_blank">View on GitHub →</a>
+            <h3>🔍 Data Analysis API</h3>
+            <p>RESTful API developed in Python with Flask for academic data analysis, including visualizations and reports.</p>
+            <a href="#" target="_blank">View on GitHub →</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEO -->
-  <section id="video">
-    <div class="container">
-      <!-- Español -->
-      <div class="lang-content lang-es active">
-        <h2>Video Presentación</h2>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" 
-                  title="Presentación" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <!-- English -->
-      <div class="lang-content lang-en">
-        <h2>Presentation Video</h2>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" 
-                  title="Presentation" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -857,7 +1110,7 @@
           </div>
           <div class="contact-item">
             <h3>📍 Ubicación</h3>
-            <p>Francesc Castells 23<br>08370 Calella</p>
+            <p>Barcelona, Cataluña, España</p>
           </div>
           <div class="contact-item">
             <h3>📞 Teléfono</h3>
@@ -884,7 +1137,7 @@
           </div>
           <div class="contact-item">
             <h3>📍 Location</h3>
-            <p>Francesc Castells 23<br>08370 Calella</p>
+            <p>Barcelona, Catalonia, Spain</p>
           </div>
           <div class="contact-item">
             <h3>📞 Phone</h3>
@@ -899,9 +1152,9 @@
   <footer>
     <div class="container">
       <!-- Español -->
-      <p class="lang-content lang-es active">© 2025 Sergi Salas - Portfolio personal</p>
+      <p class="lang-content lang-es active">© 2025 Sergi Salas - Ingeniero de Software</p>
       <!-- English -->
-      <p class="lang-content lang-en">© 2025 Sergi Salas - Personal Portfolio</p>
+      <p class="lang-content lang-en">© 2025 Sergi Salas - Software Engineer</p>
     </div>
   </footer>
 
