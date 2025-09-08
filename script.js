@@ -1,37 +1,62 @@
-// ====== GESTIÓN DE IDIOMAS ======
+// ====== GESTIÓN DE IDIOMAS MEJORADA ======
 function changeLanguage() {
-    const selector = document.getElementById('languageSelector');
-    const selectedLang = selector.value;
-    
-    // Ocultar todos los contenidos
-    const allLangContent = document.querySelectorAll('.lang-content');
-    allLangContent.forEach(content => {
-      content.classList.remove('active');
-    });
-    
-    // Mostrar contenido del idioma seleccionado
-    const selectedContent = document.querySelectorAll('.lang-' + selectedLang);
-    selectedContent.forEach(content => {
-      content.classList.add('active');
-    });
-    
-    // Cambiar el atributo lang del HTML
-    document.documentElement.lang = selectedLang;
-    
-    // Guardar preferencia en localStorage
-    localStorage.setItem('preferredLanguage', selectedLang);
-  }
+  const selector = document.getElementById('languageSelector');
+  const selectedLang = selector.value;
   
-  // ====== CARGA INICIAL DE LA PÁGINA ======
-  function initializePage() {
-    // Cargar idioma preferido
-    const savedLang = localStorage.getItem('preferredLanguage') || 'es';
-    document.getElementById('languageSelector').value = savedLang;
-    
-    if (savedLang !== 'es') {
-      changeLanguage();
-    }
-  }
+  // Ocultar todos los contenidos de idiomas
+  const allLangContent = document.querySelectorAll('.lang-content');
+  allLangContent.forEach(content => {
+    content.classList.remove('active');
+  });
+  
+  // Mostrar contenido del idioma seleccionado
+  const selectedContent = document.querySelectorAll('.lang-' + selectedLang);
+  selectedContent.forEach(content => {
+    content.classList.add('active');
+  });
+  
+  // Cambiar el atributo lang del HTML
+  document.documentElement.lang = selectedLang;
+  
+  // Guardar preferencia en localStorage
+  localStorage.setItem('preferredLanguage', selectedLang);
+}
+
+// ====== CARGA INICIAL DE LA PÁGINA MEJORADA ======
+function initializePage() {
+  // Cargar idioma preferido
+  const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+  document.getElementById('languageSelector').value = savedLang;
+  
+  // Ocultar todo el contenido primero
+  const allLangContent = document.querySelectorAll('.lang-content');
+  allLangContent.forEach(content => {
+    content.classList.remove('active');
+  });
+  
+  // Mostrar solo el idioma seleccionado
+  const selectedContent = document.querySelectorAll('.lang-' + savedLang);
+  selectedContent.forEach(content => {
+    content.classList.add('active');
+  });
+  
+  // Establecer el idioma del documento
+  document.documentElement.lang = savedLang;
+}
+
+// ...existing code...
+
+// ====== INICIALIZACIÓN AL CARGAR LA PÁGINA ======
+window.addEventListener('DOMContentLoaded', function() {
+  initializePage();
+});
+
+window.addEventListener('load', function() {
+  initializeSmoothScrolling();
+  initializeScrollAnimations();
+  initializeHoverEffects();
+});
+
   
   // ====== SMOOTH SCROLLING PARA NAVEGACIÓN ======
   function initializeSmoothScrolling() {

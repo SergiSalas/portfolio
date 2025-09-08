@@ -114,6 +114,29 @@ body::before {
   outline-offset: 2px;
 }
 
+.lang-content {
+  display: none !important;
+}
+
+.lang-content.active {
+  display: block !important;
+}
+
+/* Para elementos inline como spans dentro de párrafos */
+.lang-content.active.inline {
+  display: inline !important;
+}
+
+/* Para elementos flex */
+.lang-content.active.flex {
+  display: flex !important;
+}
+
+/* Para elementos grid */
+.lang-content.active.grid {
+  display: grid !important;
+}
+
 /* ====== HEADER ====== */
 header {
   background: var(--gradient-primary);
