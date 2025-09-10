@@ -83,6 +83,15 @@ body::before {
   padding: 0 2rem;
 }
 
+/* ====== GESTIÓN DE IDIOMAS ====== */
+.lang-content {
+  display: none;
+}
+
+.lang-content.active {
+  display: block;
+}
+
 /* ====== SELECTOR DE IDIOMA ====== */
 .language-selector {
   position: fixed;
