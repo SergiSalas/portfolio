@@ -3,6 +3,8 @@ function changeLanguage() {
   const selector = document.getElementById('languageSelector');
   const selectedLang = selector.value;
   
+  console.log('Cambiando idioma a:', selectedLang); // Para debug
+  
   // Ocultar todos los contenidos de idiomas
   const allLangContent = document.querySelectorAll('.lang-content');
   allLangContent.forEach(content => {
@@ -20,13 +22,21 @@ function changeLanguage() {
   
   // Guardar preferencia en localStorage
   localStorage.setItem('preferredLanguage', selectedLang);
+  
+  console.log('Elementos activos:', document.querySelectorAll('.lang-content.active').length); // Para debug
 }
 
 // ====== CARGA INICIAL DE LA PÁGINA MEJORADA ======
 function initializePage() {
+  console.log('Inicializando página...'); // Para debug
+  
   // Cargar idioma preferido
   const savedLang = localStorage.getItem('preferredLanguage') || 'es';
-  document.getElementById('languageSelector').value = savedLang;
+  const selector = document.getElementById('languageSelector');
+  
+  if (selector) {
+    selector.value = savedLang;
+  }
   
   // Ocultar todo el contenido primero
   const allLangContent = document.querySelectorAll('.lang-content');
@@ -35,10 +45,15 @@ function initializePage() {
   });
   
   // Mostrar solo el idioma seleccionado
-  const selectedContent = document.querySelectorAll('.lang-' + savedLang);
-  selectedContent.forEach(content => {
-    content.classList.add('active');
-  });
+  setTimeout(() => {
+    const selectedContent = document.querySelectorAll('.lang-' + savedLang);
+    selectedContent.forEach(content => {
+      content.classList.add('active');
+    });
+    
+    console.log('Idioma inicial:', savedLang);
+    console.log('Elementos mostrados:', selectedContent.length);
+  }, 100);
   
   // Establecer el idioma del documento
   document.documentElement.lang = savedLang;
@@ -120,10 +135,25 @@ function initializeHoverEffects() {
 
 // ====== INICIALIZACIÓN AL CARGAR LA PÁGINA ======
 window.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM cargado'); // Para debug
   initializePage();
   initializeSmoothScrolling();
   initializeScrollAnimations();
   initializeHoverEffects();
+});
+
+// ====== INICIALIZACIÓN ADICIONAL ======
+window.addEventListener('load', function() {
+  console.log('Página completamente cargada'); // Para debug
+  // Reinicializar el idioma por si acaso
+  setTimeout(() => {
+    const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+    const selector = document.getElementById('languageSelector');
+    if (selector && selector.value !== savedLang) {
+      selector.value = savedLang;
+      changeLanguage();
+    }
+  }, 200);
 });
 
 // ====== MANEJO DE REDIMENSIONAMIENTO ======

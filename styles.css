@@ -85,11 +85,11 @@ body::before {
 
 /* ====== GESTIÓN DE IDIOMAS ====== */
 .lang-content {
-  display: none;
+  display: none !important;
 }
 
 .lang-content.active {
-  display: block;
+  display: block !important;
 }
 
 /* ====== SELECTOR DE IDIOMA ====== */
