@@ -94,18 +94,17 @@ body::before {
 
 /* ====== SELECTOR DE IDIOMA ====== */
 .language-selector {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1000;
-  background: var(--gradient-card);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-  box-shadow: var(--shadow-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   padding: 0.3rem;
   backdrop-filter: blur(15px);
   transition: all 0.3s ease;
-  position: relative;
   overflow: hidden;
 }
 
@@ -116,15 +115,15 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(187, 134, 252, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 16px;
 }
 
 .language-selector:hover {
-  border-color: var(--primary-color);
-  box-shadow: var(--shadow-glow);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
@@ -137,7 +136,7 @@ body::before {
   background: transparent;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: white;
   cursor: pointer;
   padding: 0.8rem 1.2rem;
   border-radius: 12px;
@@ -148,7 +147,7 @@ body::before {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%2300d9ff' viewBox='0 0 16 16'%3e%3cpath d='M8 13.1l4.7-4.7c.4-.4.4-1 0-1.4s-1-.4-1.4 0L8 10.3 4.7 7c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4L8 13.1z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3e%3cpath d='M8 13.1l4.7-4.7c.4-.4.4-1 0-1.4s-1-.4-1.4 0L8 10.3 4.7 7c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4L8 13.1z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.8rem center;
   background-size: 16px;
@@ -157,10 +156,9 @@ body::before {
 }
 
 .language-selector select:focus {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
-  background-color: rgba(0, 217, 255, 0.1);
-  color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .language-selector select option {
@@ -189,7 +187,7 @@ body::before {
   top: -8px;
   left: -8px;
   font-size: 0.7rem;
-  color: var(--secondary-color);
+  color: rgba(255, 255, 255, 0.6);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
   opacity: 0.6;
@@ -198,7 +196,7 @@ body::before {
 
 .language-selector:hover::after {
   opacity: 1;
-  color: var(--primary-color);
+  color: white;
   transform: rotate(5deg);
 }
 
