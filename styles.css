@@ -552,10 +552,16 @@ section h2::after {
 }
 
 /* ====== EDUCACIÓN ====== */
+.education-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
 .education-item {
   background: var(--gradient-card);
-  padding: 1.8rem;
-  margin-bottom: 1.2rem;
+  padding: 2rem;
+  margin-bottom: 0;
   border-radius: 16px;
   border: 1px solid var(--border-color);
   position: relative;
@@ -563,7 +569,7 @@ section h2::after {
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 
 .education-item::before {
@@ -579,9 +585,9 @@ section h2::after {
 }
 
 .education-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   border-color: var(--secondary-color);
-  box-shadow: 0 5px 20px rgba(100, 255, 218, 0.15);
+  box-shadow: 0 8px 30px rgba(100, 255, 218, 0.2);
 }
 
 .education-item:hover::before {
@@ -589,12 +595,12 @@ section h2::after {
 }
 
 .education-logo {
-  width: 45px;
-  height: 45px;
-  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
   object-fit: contain;
   background: var(--bg-primary);
-  padding: 6px;
+  padding: 8px;
   border: 2px solid var(--border-color);
   transition: all 0.3s ease;
   flex-shrink: 0;
@@ -602,7 +608,7 @@ section h2::after {
 
 .education-logo:hover {
   border-color: var(--secondary-color);
-  box-shadow: 0 0 12px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
 }
 
 .education-content {
@@ -612,54 +618,54 @@ section h2::after {
 }
 
 .education-item h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--secondary-color);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   font-family: 'JetBrains Mono', monospace;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .education-institution {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .education-period {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--primary-color);
   background: rgba(0, 217, 255, 0.1);
   border: 1px solid rgba(0, 217, 255, 0.2);
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
   font-weight: 500;
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   font-family: 'JetBrains Mono', monospace;
 }
 
 .education-description {
   color: var(--text-secondary);
-  line-height: 1.5;
-  font-size: 0.85rem;
+  line-height: 1.6;
+  font-size: 0.9rem;
   margin: 0;
 }
 
-/* Educación sin logo - más compacta */
+/* Educación sin logo */
 .education-item.no-logo {
-  padding-left: 3.5rem;
+  padding-left: 4rem;
   position: relative;
 }
 
 .education-item.no-logo::after {
   content: '🎓';
   position: absolute;
-  left: 1.2rem;
+  left: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   opacity: 0.7;
 }
 
@@ -668,12 +674,16 @@ section h2::after {
   .education-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 }
 
 /* ====== RESPONSIVE PARA EDUCACIÓN ====== */
 @media (max-width: 768px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .education-item {
     flex-direction: row;
     padding: 1.5rem;
@@ -682,35 +692,35 @@ section h2::after {
   }
   
   .education-logo {
-    width: 40px;
-    height: 40px;
-    margin-top: 0.2rem;
+    width: 45px;
+    height: 45px;
+    margin-top: 0.3rem;
   }
   
   .education-item h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .education-institution {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
   
   .education-period {
-    font-size: 0.75rem;
-    padding: 0.15rem 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
   }
   
   .education-description {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
   
   .education-item.no-logo {
-    padding-left: 3rem;
+    padding-left: 3.5rem;
   }
   
   .education-item.no-logo::after {
-    left: 1rem;
-    font-size: 1rem;
+    left: 1.2rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -718,11 +728,13 @@ section h2::after {
   .education-item {
     flex-direction: column;
     text-align: center;
-    padding: 1.2rem;
+    padding: 1.5rem;
   }
   
   .education-logo {
     align-self: center;
+    width: 40px;
+    height: 40px;
   }
   
   .education-content {
@@ -731,14 +743,15 @@ section h2::after {
   }
   
   .education-item.no-logo {
-    padding-left: 1.2rem;
+    padding-left: 1.5rem;
   }
   
   .education-item.no-logo::after {
     position: static;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     transform: none;
+    text-align: center;
   }
 }
 
