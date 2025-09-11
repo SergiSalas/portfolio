@@ -92,16 +92,16 @@ body::before {
   display: block !important;
 }
 
-/* ====== SELECTOR DE IDIOMA ====== */
+/* ====== SELECTOR DE IDIOMA EN HEADER ====== */
 .language-selector {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 30px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   padding: 0.3rem;
   backdrop-filter: blur(15px);
   transition: all 0.3s ease;
@@ -115,15 +115,15 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 16px;
 }
 
 .language-selector:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
@@ -153,12 +153,13 @@ body::before {
   background-size: 16px;
   padding-right: 2.5rem;
   min-width: 160px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .language-selector select:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 2px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .language-selector select option {
@@ -168,6 +169,7 @@ body::before {
   padding: 1rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 500;
+  text-shadow: none;
 }
 
 .language-selector select option:hover {
@@ -187,11 +189,12 @@ body::before {
   top: -8px;
   left: -8px;
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
   opacity: 0.6;
   transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .language-selector:hover::after {
@@ -202,8 +205,8 @@ body::before {
 
 @media (max-width: 768px) {
   .language-selector {
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     padding: 0.2rem;
   }
   
