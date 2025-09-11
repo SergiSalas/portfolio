@@ -8,35 +8,38 @@
 </head>
 <body>
 
-
   <!-- NAVEGACIÓN -->
   <nav class="navigation">
     <div class="container">
-      <a href="#sobre-mi" class="nav-link lang-content lang-es">Sobre Mí</a>
-      <a href="#sobre-mi" class="nav-link lang-content lang-en">About Me</a>
-      <a href="#experiencia" class="nav-link lang-content lang-es">Experiencia</a>
-      <a href="#experiencia" class="nav-link lang-content lang-en">Experience</a>
-      <a href="#educacion" class="nav-link lang-content lang-es">Educación</a>
-      <a href="#educacion" class="nav-link lang-content lang-en">Education</a>
-      <a href="#proyectos" class="nav-link lang-content lang-es">Proyectos</a>
-      <a href="#proyectos" class="nav-link lang-content lang-en">Projects</a>
-      <a href="#habilidades" class="nav-link lang-content lang-es">Habilidades</a>
-      <a href="#habilidades" class="nav-link lang-content lang-en">Skills</a>
-      <a href="#contacto" class="nav-link lang-content lang-es">Contacto</a>
-      <a href="#contacto" class="nav-link lang-content lang-en">Contact</a>
+      <div class="nav-content">
+        <div class="nav-links">
+          <a href="#sobre-mi" class="nav-link lang-content lang-es">Sobre Mí</a>
+          <a href="#sobre-mi" class="nav-link lang-content lang-en">About Me</a>
+          <a href="#experiencia" class="nav-link lang-content lang-es">Experiencia</a>
+          <a href="#experiencia" class="nav-link lang-content lang-en">Experience</a>
+          <a href="#educacion" class="nav-link lang-content lang-es">Educación</a>
+          <a href="#educacion" class="nav-link lang-content lang-en">Education</a>
+          <a href="#proyectos" class="nav-link lang-content lang-es">Proyectos</a>
+          <a href="#proyectos" class="nav-link lang-content lang-en">Projects</a>
+          <a href="#habilidades" class="nav-link lang-content lang-es">Habilidades</a>
+          <a href="#habilidades" class="nav-link lang-content lang-en">Skills</a>
+          <a href="#contacto" class="nav-link lang-content lang-es">Contacto</a>
+          <a href="#contacto" class="nav-link lang-content lang-en">Contact</a>
+        </div>
+        
+        <!-- SELECTOR DE IDIOMA EN LA NAVEGACIÓN -->
+        <div class="language-selector">
+          <select id="languageSelector" onchange="changeLanguage()">
+            <option value="es">🇪🇸 ES</option>
+            <option value="en">🇬🇧 EN</option>
+          </select>
+        </div>
+      </div>
     </div>
   </nav>
 
   <!-- ENCABEZADO -->
   <header class="header">
-    <!-- SELECTOR DE IDIOMA MOVIDO AL HEADER -->
-    <div class="language-selector">
-      <select id="languageSelector" onchange="changeLanguage()">
-        <option value="es">🇪🇸 Español</option>
-        <option value="en">🇬🇧 English</option>
-      </select>
-    </div>
-    
     <div class="container">
       <div class="header-content">
         <div class="profile-section">
