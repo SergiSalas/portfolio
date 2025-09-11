@@ -551,6 +551,144 @@ section h2::after {
   box-shadow: 0 4px 12px rgba(0, 217, 255, 0.2);
 }
 
+/* ====== EDUCACIÓN ====== */
+.education-item {
+  background: var(--gradient-card);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.education-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(187, 134, 252, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--secondary-color);
+  box-shadow: 0 8px 30px rgba(100, 255, 218, 0.2);
+}
+
+.education-item:hover::before {
+  opacity: 1;
+}
+
+.education-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  padding: 8px;
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.education-logo:hover {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+.education-content {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.education-item h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.3;
+}
+
+.education-institution {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+}
+
+.education-period {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.education-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Educación sin logo */
+.education-item.no-logo {
+  padding-left: 2rem;
+}
+
+.education-item.no-logo::before {
+  content: '🎓';
+  position: absolute;
+  left: 0.5rem;
+  top: 2rem;
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+/* ====== RESPONSIVE PARA EDUCACIÓN ====== */
+@media (max-width: 768px) {
+  .education-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .education-logo {
+    width: 50px;
+    height: 50px;
+    align-self: center;
+  }
+  
+  .education-content {
+    text-align: left;
+  }
+  
+  .education-item h3 {
+    font-size: 1.1rem;
+  }
+  
+  .education-item.no-logo::before {
+    position: static;
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+
 /* ====== PROYECTOS ====== */
 .projects-grid {
   display: grid;
