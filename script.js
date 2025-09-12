@@ -3,7 +3,7 @@ function changeLanguage() {
   const selector = document.getElementById('languageSelector');
   const selectedLang = selector.value;
   
-  console.log('Cambiando idioma a:', selectedLang); // Para debug
+  console.log('Cambiando idioma a:', selectedLang);
   
   // Ocultar todos los contenidos de idiomas
   const allLangContent = document.querySelectorAll('.lang-content');
@@ -20,15 +20,42 @@ function changeLanguage() {
   // Cambiar el atributo lang del HTML
   document.documentElement.lang = selectedLang;
   
+  // Actualizar la bandera del selector
+  const languageSelector = document.querySelector('.language-selector');
+  languageSelector.setAttribute('data-current', selectedLang);
+  
   // Guardar preferencia en localStorage
   localStorage.setItem('preferredLanguage', selectedLang);
   
-  console.log('Elementos activos:', document.querySelectorAll('.lang-content.active').length); // Para debug
+  console.log('Elementos activos:', document.querySelectorAll('.lang-content.active').length);
 }
 
 // ====== CARGA INICIAL DE LA PÁGINA MEJORADA ======
 function initializePage() {
-  console.log('Inicializando página...'); // Para debug
+  console.log('Inicializando página...');
+  
+  // Crear elemento decorativo para el selector
+  const languageSelector = document.querySelector('.language-selector');
+  if (languageSelector && !languageSelector.querySelector('.code-decoration')) {
+    const codeDecoration = document.createElement('span');
+    codeDecoration.className = 'code-decoration';
+    codeDecoration.textContent = '<>';
+    codeDecoration.style.cssText = `
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      z-index: 5;
+      pointer-events: none;
+    `;
+    languageSelector.appendChild(codeDecoration);
+  }
   
   // Cargar idioma preferido
   const savedLang = localStorage.getItem('preferredLanguage') || 'es';
@@ -36,6 +63,10 @@ function initializePage() {
   
   if (selector) {
     selector.value = savedLang;
+  }
+  
+  if (languageSelector) {
+    languageSelector.setAttribute('data-current', savedLang);
   }
   
   // Ocultar todo el contenido primero
