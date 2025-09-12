@@ -888,34 +888,15 @@ section h2::after {
 
 /* ====== HABILIDADES ====== */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   margin-top: 2rem;
   padding-bottom: 1rem;
-  justify-items: center;
+  justify-content: center;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.skill-category:nth-child(1),
-.skill-category:nth-child(2),
-.skill-category:nth-child(3) {
-  grid-row: 1;
-  width: 100%;
-}
-
-.skill-category:nth-child(4) {
-  grid-row: 2;
-  grid-column: 1 / 2;
-  width: 100%;
-}
-
-.skill-category:nth-child(5) {
-  grid-row: 2;
-  grid-column: 3 / 4;
-  width: 100%;
 }
 
 .skill-category {
@@ -927,7 +908,9 @@ section h2::after {
   transition: all 0.4s ease;
   overflow: hidden;
   min-height: 400px;
-  max-width: 350px; /* Limita el ancho máximo */
+  width: calc(33.333% - 1.33rem); /* 3 por fila con gap ajustado */
+  max-width: 350px;
+  flex: 0 0 auto; /* No crezca ni se encoja */
 }
 
 .skill-category::before {
@@ -1035,7 +1018,7 @@ section h2::after {
   z-index: 2;
   min-height: 35px;
   gap: 1rem;
-  min-width: 0; /* Importante para el flex */
+  min-width: 0;
 }
 
 .skill-name {
@@ -1045,11 +1028,11 @@ section h2::after {
   font-size: 0.95rem;
   flex: 1;
   min-width: 0;
-  margin-right: 1rem; /* Espaciado fijo */
+  margin-right: 1rem;
 }
 
 .skill-bar {
-  width: 80px; /* Ancho fijo más pequeño */
+  width: 80px;
   height: 8px;
   background: var(--bg-primary);
   border-radius: 10px;
@@ -1096,12 +1079,8 @@ section h2::after {
 }
 
 @keyframes skillShine {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 /* Habilidades sin barra de progreso */
@@ -1159,23 +1138,13 @@ section h2::after {
 }
 
 /* ====== RESPONSIVE PARA HABILIDADES ====== */
+
+/* TABLET: 2 columnas (768px - 1200px) */
 @media (max-width: 1200px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 800px;
-  }
-  
-  .skill-category:nth-child(4),
-  .skill-category:nth-child(5) {
-    grid-row: auto;
-    grid-column: auto;
-    max-width: none;
-  }
-  
   .skill-category {
-    min-height: 350px;
+    width: calc(50% - 1rem); /* 2 por fila en tablet */
     max-width: none;
+    min-height: 350px;
   }
   
   .skill-bar {
@@ -1187,24 +1156,17 @@ section h2::after {
   }
 }
 
+/* MÓVIL: 1 columna (hasta 768px) */
 @media (max-width: 768px) {
   .skills-grid {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
-    max-width: 100%;
-  }
-  
-  .skill-category:nth-child(4),
-  .skill-category:nth-child(5) {
-    grid-row: auto;
-    grid-column: 1;
-    max-width: none;
   }
   
   .skill-category {
+    width: 100%; /* 1 por fila en móvil */
+    max-width: none;
     padding: 1.5rem;
     min-height: auto;
-    max-width: none;
   }
   
   .skill-category h3 {
@@ -1244,53 +1206,21 @@ section h2::after {
   }
 }
 
+/* MÓVILES PEQUEÑOS: Layout especial en grid (hasta 480px) */
 @media (max-width: 480px) {
-  .skill-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
+  .skill-category {
     padding: 1.2rem;
-    min-height: auto;
+    min-height: 300px;
   }
   
-  .skill-content {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  
-  .skill-logo, .flag-container {
-    align-self: flex-start;
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-  
-  .skill-name {
-    font-size: 0.9rem;
-    margin-right: 0;
-    flex: 1;
-  }
-  
-  .skill-bar {
-    width: 80px;
-    height: 6px;
-    flex-shrink: 0;
-  }
-  
-  .language-level {
-    align-self: flex-end;
-    flex-shrink: 0;
-  }
-  
-  /* Layout especial para móviles pequeños */
   .skill-item {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     gap: 0.8rem 1rem;
     align-items: center;
+    padding: 1.2rem;
+    min-height: auto;
   }
   
   .skill-logo, .flag-container {
@@ -1304,6 +1234,7 @@ section h2::after {
     grid-row: 1;
     grid-column: 2;
     margin: 0;
+    font-size: 0.9rem;
   }
   
   .skill-bar, .language-level {
@@ -1311,24 +1242,10 @@ section h2::after {
     grid-column: 2;
     justify-self: end;
   }
-}
-
-/* Responsive para habilidades en móviles */
-@media (max-width: 768px) {
-  .skill-category {
-    flex: 1 0 calc((100% - 4rem) / 3); /* 3 cards en tablet */
-    min-width: 250px;
-    padding: 1.5rem;
-    min-height: 350px;
-  }
-}
-
-@media (max-width: 480px) {
-  .skill-category {
-    flex: 1 0 calc((100% - 2rem) / 2); /* 2 cards en móvil */
-    min-width: 220px;
-    padding: 1.2rem;
-    min-height: 300px;
+  
+  .skill-bar {
+    width: 80px;
+    height: 6px;
   }
 }
 
