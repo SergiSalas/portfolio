@@ -890,11 +890,13 @@ section h2::after {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
   gap: 2rem;
   margin-top: 2rem;
   padding-bottom: 1rem;
   justify-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .skill-category:nth-child(1),
@@ -902,23 +904,18 @@ section h2::after {
 .skill-category:nth-child(3) {
   grid-row: 1;
   width: 100%;
-  max-width: none;
 }
 
 .skill-category:nth-child(4) {
   grid-row: 2;
   grid-column: 1 / 2;
-  justify-self: end;
   width: 100%;
-  max-width: 320px;
 }
 
 .skill-category:nth-child(5) {
   grid-row: 2;
   grid-column: 3 / 4;
-  justify-self: start;
   width: 100%;
-  max-width: 320px;
 }
 
 .skill-category {
@@ -930,6 +927,7 @@ section h2::after {
   transition: all 0.4s ease;
   overflow: hidden;
   min-height: 400px;
+  max-width: 350px; /* Limita el ancho máximo */
 }
 
 .skill-category::before {
@@ -1165,19 +1163,19 @@ section h2::after {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    max-width: 800px;
   }
   
   .skill-category:nth-child(4),
   .skill-category:nth-child(5) {
+    grid-row: auto;
     grid-column: auto;
-    justify-self: stretch;
-    margin: 0;
     max-width: none;
   }
   
   .skill-category {
-    padding: 2rem;
     min-height: 350px;
+    max-width: none;
   }
   
   .skill-bar {
@@ -1193,19 +1191,20 @@ section h2::after {
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: 100%;
   }
   
   .skill-category:nth-child(4),
   .skill-category:nth-child(5) {
+    grid-row: auto;
     grid-column: 1;
-    justify-self: stretch;
-    margin: 0;
     max-width: none;
   }
   
   .skill-category {
     padding: 1.5rem;
     min-height: auto;
+    max-width: none;
   }
   
   .skill-category h3 {
