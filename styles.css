@@ -241,8 +241,8 @@ body::before {
 @media (max-width: 768px) {
   .nav-content {
     flex-direction: column;
-    gap: 0.5rem; /* Reducir gap */
-    padding: 0.6rem 0; /* Menos padding */
+    gap: 0.5rem;
+    padding: 0.6rem 0;
   }
   
   .nav-links {
@@ -253,7 +253,7 @@ body::before {
   }
   
   .nav-link {
-    padding: 0.6rem 0.8rem; /* Menos padding */
+    padding: 0.6rem 0.8rem;
     font-size: 0.8rem;
   }
   
@@ -261,91 +261,135 @@ body::before {
     display: none;
   }
   
-  /* Selector de idioma más compacto */
+  /* Selector de idioma más compacto y mejorado */
   .language-selector {
     order: 1 !important;
     margin: 0 !important;
     align-self: center !important;
-    width: 60px !important; /* Más pequeño */
+    width: 60px !important;
     min-width: 60px !important;
     max-width: 60px !important;
     background: rgba(26, 26, 26, 0.95) !important;
     border: 1px solid rgba(0, 217, 255, 0.4) !important;
-    border-radius: 6px !important; /* Bordes más pequeños */
-    padding: 0.15rem !important; /* Menos padding */
+    border-radius: 8px !important; /* Bordes más redondeados */
+    padding: 0.2rem !important;
     position: relative !important;
     overflow: visible !important;
+    backdrop-filter: blur(10px) !important;
   }
   
   .language-selector select {
-    font-size: 0.65rem !important; /* Texto más pequeño */
-    padding: 0.3rem 1rem 0.3rem 1.4rem !important; /* Menos padding */
-    width: 60px !important;
-    min-width: 60px !important;
-    max-width: 60px !important;
-    background-size: 6px !important; /* Flecha más pequeña */
-    background-position: right 0.3rem center !important;
+    font-size: 0.7rem !important;
+    padding: 0.4rem 1.2rem 0.4rem 1.6rem !important;
+    width: 100% !important;
+    height: 28px !important; /* Altura fija */
+    background-size: 8px !important;
+    background-position: right 0.4rem center !important;
     text-align: center !important;
     font-weight: 600 !important;
+    border-radius: 6px !important;
+    line-height: 1.2 !important;
+    border: none !important;
+    background-color: transparent !important;
+    color: white !important;
+    outline: none !important;
+    cursor: pointer !important;
+  }
+  
+  /* Mejoras para el dropdown en móviles */
+  .language-selector select option {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    padding: 0.6rem 1rem !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 500 !important;
+    font-size: 0.8rem !important;
+    text-align: center !important;
     border-radius: 4px !important;
-    line-height: 1 !important;
-    height: auto !important;
+    margin: 2px 0 !important;
+  }
+  
+  .language-selector select option:hover,
+  .language-selector select option:focus {
+    background-color: var(--bg-hover) !important;
+    color: var(--primary-color) !important;
+  }
+  
+  .language-selector select option:checked {
+    background-color: var(--primary-color) !important;
+    color: var(--bg-primary) !important;
+    font-weight: 600 !important;
   }
   
   .language-selector::after {
     position: absolute !important;
-    left: 0.25rem !important; /* Más cerca del borde */
+    left: 0.3rem !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    width: 12px !important; /* Bandera más pequeña */
-    height: 8px !important;
-    border-radius: 1px !important;
+    width: 14px !important;
+    height: 10px !important;
+    border-radius: 2px !important;
     opacity: 1 !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
     z-index: 10 !important;
   }
   
   .language-selector .code-decoration {
-    display: none !important; /* Ocultar en móviles para más espacio */
+    display: none !important;
   }
   
   .language-selector:hover {
     border-color: rgba(0, 217, 255, 0.7) !important;
-    box-shadow: 0 0 8px rgba(0, 217, 255, 0.3) !important;
+    box-shadow: 0 0 12px rgba(0, 217, 255, 0.4) !important;
+    background: rgba(26, 26, 26, 0.98) !important;
   }
   
   .language-selector:hover::after {
-    border-color: rgba(255, 255, 255, 0.8) !important;
-    transform: translateY(-50%) scale(1.05) !important; /* Menos escala */
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  /* Estilos específicos para cuando el select está enfocado/abierto */
+  .language-selector select:focus {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(0, 217, 255, 0.6) !important;
+    box-shadow: 0 0 8px rgba(0, 217, 255, 0.3) !important;
   }
 }
 
 /* Para móviles pequeños */
 @media (max-width: 480px) {
   .nav-content {
-    gap: 0.4rem; /* Aún menos gap */
+    gap: 0.4rem;
     padding: 0.4rem 0;
   }
   
   .language-selector {
-    width: 55px !important; /* Aún más pequeño */
-    min-width: 55px !important;
-    max-width: 55px !important;
-  }
-  
-  .language-selector select {
-    padding: 0.25rem 0.8rem 0.25rem 1.2rem !important;
     width: 55px !important;
     min-width: 55px !important;
     max-width: 55px !important;
-    font-size: 0.6rem !important;
+    border-radius: 6px !important;
+  }
+  
+  .language-selector select {
+    padding: 0.3rem 1rem 0.3rem 1.4rem !important;
+    font-size: 0.65rem !important;
+    height: 26px !important;
+    border-radius: 5px !important;
   }
   
   .language-selector::after {
-    left: 0.2rem !important;
-    width: 11px !important;
-    height: 7px !important;
+    left: 0.25rem !important;
+    width: 12px !important;
+    height: 8px !important;
+  }
+  
+  .language-selector select option {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
@@ -357,23 +401,28 @@ body::before {
   }
   
   .language-selector {
-    width: 50px !important; /* Muy compacto */
-    min-width: 50px !important;
-    max-width: 50px !important;
-  }
-  
-  .language-selector select {
-    padding: 0.2rem 0.6rem 0.2rem 1rem !important;
     width: 50px !important;
     min-width: 50px !important;
     max-width: 50px !important;
-    font-size: 0.55rem !important;
+    border-radius: 6px !important;
+  }
+  
+  .language-selector select {
+    padding: 0.25rem 0.8rem 0.25rem 1.2rem !important;
+    font-size: 0.6rem !important;
+    height: 24px !important;
+    border-radius: 4px !important;
   }
   
   .language-selector::after {
-    left: 0.15rem !important;
+    left: 0.2rem !important;
     width: 10px !important;
-    height: 6px !important;
+    height: 7px !important;
+  }
+  
+  .language-selector select option {
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.7rem !important;
   }
 }
 
