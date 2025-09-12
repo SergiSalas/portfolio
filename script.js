@@ -171,3 +171,126 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Banner de "lluvia de código" en el header
+(() => {
+  const header = document.querySelector('.header');
+  const canvas = document.getElementById('codeCanvas');
+  if (!header || !canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const CSS = getComputedStyle(document.documentElement);
+  const color =
+    (CSS.getPropertyValue('--secondary-color') || '#64ffda').trim() || '#64ffda';
+  const bgFade = 'rgba(2, 12, 27, 0.08)'; // fondo sutilmente oscuro (legibilidad)
+
+  // Conjunto de caracteres "de código"
+  const chars = Array.from('01{}[]()<>=+-/*;:&%$#@!^?|\\.,_~"\'`abcdefXYZ<>');
+  let fontSize = 16;
+  let dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  let width = 0, height = 0, columns = 0;
+  let drops = [];
+  let raf = 0;
+  let last = 0;
+  const targetFPS = 30;
+  const frameInterval = 1000 / targetFPS;
+
+  const prefersReduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    const rect = header.getBoundingClientRect();
+    width = Math.max(1, Math.floor(rect.width));
+    height = Math.max(1, Math.floor(rect.height));
+
+    // Ajusta tamaño del texto según ancho (responsive)
+    fontSize = Math.max(12, Math.min(20, Math.floor(width / 90)));
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.font = `${fontSize}px "JetBrains Mono", Consolas, monospace`;
+    ctx.textBaseline = 'top';
+
+    columns = Math.ceil(width / fontSize);
+    drops = new Array(columns).fill(0).map(() => Math.floor(Math.random() * (height / fontSize)));
+  }
+
+  function draw(t) {
+    raf = requestAnimationFrame(draw);
+    if (t - last < frameInterval) return;
+    last = t;
+
+    // Desvanece ligeramente el lienzo para estelas
+    ctx.fillStyle = bgFade;
+    ctx.fillRect(0, 0, width, height);
+
+    for (let i = 0; i < columns; i++) {
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
+
+      // "cabeza" más brillante y cola un poco más apagada
+      ctx.fillStyle = color;
+      const ch = chars[(Math.random() * chars.length) | 0];
+      ctx.fillText(ch, x, y);
+
+      // ocasionalmente pinta una cola tenue para variar
+      ctx.fillStyle = hexToRgba(color, 0.5);
+      if (Math.random() < 0.3) {
+        ctx.fillText(chars[(Math.random() * chars.length) | 0], x, y - fontSize);
+      }
+
+      if (y > height && Math.random() > 0.975) {
+        drops[i] = 0;
+      } else {
+        drops[i]++;
+      }
+    }
+  }
+
+  function start() {
+    stop();
+    if (prefersReduce) {
+      // Dibuja un patrón estático si el usuario prefiere menos movimiento
+      ctx.clearRect(0, 0, width, height);
+      for (let y = 0; y < height; y += fontSize * 2) {
+        for (let x = (y / fontSize) % 2 ? fontSize : 0; x < width; x += fontSize * 2) {
+          ctx.fillStyle = hexToRgba(color, 0.6);
+          ctx.fillText(chars[(Math.random() * chars.length) | 0], x, y);
+        }
+      }
+      return;
+    }
+    raf = requestAnimationFrame(draw);
+  }
+
+  function stop() {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  function hexToRgba(hex, a = 1) {
+    let c = hex.replace('#', '');
+    if (c.length === 3) c = c.split('').map(h => h + h).join('');
+    const num = parseInt(c, 16);
+    const r = (num >> 16) & 255;
+    const g = (num >> 8) & 255;
+    const b = num & 255;
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+  }
+
+  // Observa cambios de tamaño del header (por responsive o cambios de idioma)
+  const ro = new ResizeObserver(() => {
+    resize();
+    start();
+  });
+
+  resize();
+  start();
+  ro.observe(header);
+
+  // Limpieza al navegar o recargar
+  window.addEventListener('beforeunload', stop);
+})();
