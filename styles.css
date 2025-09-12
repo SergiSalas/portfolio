@@ -266,13 +266,13 @@ body::before {
     margin-left: 0 !important;
     margin-bottom: 0 !important;
     align-self: center !important;
-    min-width: 160px !important;
-    width: 160px !important;
+    min-width: 100px !important; /* Reducido de 160px */
+    width: 100px !important;
     height: auto !important;
     background: rgba(26, 26, 26, 0.95) !important;
     border: 2px solid rgba(0, 217, 255, 0.5) !important;
-    border-radius: 15px !important;
-    padding: 0.5rem !important;
+    border-radius: 12px !important; /* Menos redondeado */
+    padding: 0.3rem !important; /* Menos padding */
     position: relative !important;
     display: flex !important;
     align-items: center !important;
@@ -280,93 +280,101 @@ body::before {
   }
   
   .language-selector select {
-    font-size: 0.95rem !important;
-    padding: 0.9rem 2.8rem 0.9rem 3.5rem !important;
-    min-width: 160px !important;
-    width: 160px !important;
+    font-size: 0.8rem !important; /* Texto más pequeño */
+    padding: 0.6rem 1.8rem 0.6rem 2.2rem !important; /* Menos padding */
+    min-width: 100px !important;
+    width: 100px !important;
     height: auto !important;
-    background-size: 12px !important;
-    background-position: right 1rem center !important;
+    background-size: 10px !important; /* Flecha más pequeña */
+    background-position: right 0.6rem center !important;
     text-align: center !important;
-    font-weight: 700 !important;
-    border-radius: 12px !important;
-    line-height: 1.2 !important;
+    font-weight: 600 !important; /* Menos bold */
+    border-radius: 10px !important;
+    line-height: 1.1 !important;
   }
   
   .language-selector::after {
     position: absolute !important;
-    left: 0.8rem !important;
+    left: 0.5rem !important; /* Más cerca del borde */
     top: 50% !important;
     transform: translateY(-50%) !important;
-    width: 28px !important;
-    height: 20px !important;
-    border-radius: 4px !important;
+    width: 20px !important; /* Bandera más pequeña */
+    height: 14px !important;
+    border-radius: 3px !important;
     opacity: 1 !important;
-    border: 2px solid rgba(255, 255, 255, 0.7) !important;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* Borde más fino */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
     z-index: 10 !important;
   }
   
   .language-selector .code-decoration {
-    font-size: 0.7rem !important;
-    top: -8px !important;
-    right: -8px !important;
-    opacity: 0.9 !important;
+    font-size: 0.55rem !important; /* Más pequeño */
+    top: -5px !important;
+    right: -5px !important;
+    opacity: 0.7 !important;
     z-index: 15 !important;
   }
   
   .language-selector:hover {
     border-color: rgba(0, 217, 255, 0.8) !important;
-    box-shadow: 0 0 25px rgba(0, 217, 255, 0.5) !important;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.4) !important; /* Menos glow */
   }
   
   .language-selector:hover::after {
-    border-color: rgba(255, 255, 255, 0.9) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
-    transform: translateY(-50%) scale(1.05) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5) !important;
+    transform: translateY(-50%) scale(1.03) !important; /* Menos escala */
   }
 }
 
 /* Para móviles más pequeños */
 @media (max-width: 480px) {
   .language-selector {
-    min-width: 150px !important;
-    width: 150px !important;
-    padding: 0.4rem !important;
+    min-width: 90px !important; /* Aún más pequeño */
+    width: 90px !important;
+    padding: 0.25rem !important;
+    border-radius: 10px !important;
   }
   
   .language-selector select {
-    padding: 0.8rem 2.5rem 0.8rem 3.2rem !important;
-    min-width: 150px !important;
-    width: 150px !important;
-    font-size: 0.9rem !important;
+    padding: 0.5rem 1.6rem 0.5rem 2rem !important;
+    min-width: 90px !important;
+    width: 90px !important;
+    font-size: 0.75rem !important;
+    background-size: 8px !important;
   }
   
   .language-selector::after {
-    left: 0.7rem !important;
-    width: 26px !important;
-    height: 18px !important;
+    left: 0.4rem !important;
+    width: 18px !important;
+    height: 12px !important;
+  }
+  
+  .language-selector .code-decoration {
+    font-size: 0.5rem !important;
+    top: -4px !important;
+    right: -4px !important;
   }
 }
 
 /* Para móviles muy pequeños */
 @media (max-width: 375px) {
   .language-selector {
-    min-width: 140px !important;
-    width: 140px !important;
+    min-width: 85px !important;
+    width: 85px !important;
   }
   
   .language-selector select {
-    padding: 0.7rem 2.2rem 0.7rem 3rem !important;
-    min-width: 140px !important;
-    width: 140px !important;
-    font-size: 0.85rem !important;
+    padding: 0.45rem 1.4rem 0.45rem 1.8rem !important;
+    min-width: 85px !important;
+    width: 85px !important;
+    font-size: 0.7rem !important;
   }
   
   .language-selector::after {
-    left: 0.6rem !important;
-    width: 24px !important;
-    height: 16px !important;
+    left: 0.35rem !important;
+    width: 16px !important;
+    height: 11px !important;
   }
 }
 
