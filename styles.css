@@ -975,6 +975,7 @@ section h2::after {
   overflow: hidden;
   transition: width 1.5s ease-in-out;
   background: var(--bg-primary);
+  max-width: 100%;
 }
 
 .skill-progress.advanced {
@@ -1078,7 +1079,7 @@ section h2::after {
   }
   
   .skill-bar {
-    width: 90px;
+    width: 80px;
   }
 }
 
@@ -1114,7 +1115,7 @@ section h2::after {
   }
   
   .skill-bar {
-    width: 70px;
+    width: 60px;
     height: 6px;
   }
   
@@ -1147,6 +1148,7 @@ section h2::after {
     width: 100%;
     align-self: stretch;
     height: 8px;
+    max-width: 200px;
   }
   
   .language-level {
