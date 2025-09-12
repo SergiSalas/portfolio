@@ -531,23 +531,23 @@ header::before {
 /* ====== RESPONSIVE MEJORADO PARA HEADER ====== */
 @media (max-width: 768px) {
   header {
-    padding: 4rem 1rem; /* Reducir padding */
+    padding: 4rem 1rem;
   }
   
   .name {
-    font-size: 2.2rem; /* Más pequeño en móviles */
+    font-size: 2.2rem; 
     margin-bottom: 0.8rem;
     line-height: 1.1;
   }
   
   .title {
-    font-size: 1rem; /* Reducir tamaño */
+    font-size: 1rem;
     margin-top: 0.8rem;
     line-height: 1.4;
   }
 
   .profile-photo {
-    width: 140px; /* Más pequeña */
+    width: 140px;
     height: 140px;
     margin-bottom: 1.5rem;
   }
@@ -557,17 +557,17 @@ header::before {
   }
   
   .profile-info {
-    padding: 0 1rem; /* Añadir padding lateral */
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
   header {
-    padding: 3rem 0.5rem; /* Aún más compacto */
+    padding: 3rem 0.5rem; 
   }
   
   .name {
-    font-size: 1.8rem; /* Más pequeño para móviles muy pequeños */
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
     letter-spacing: -0.01em;
   }
@@ -580,7 +580,7 @@ header::before {
   }
 
   .profile-photo {
-    width: 120px; /* Aún más pequeña */
+    width: 120px;
     height: 120px;
     margin-bottom: 1rem;
   }
@@ -589,9 +589,8 @@ header::before {
     padding: 0 0.5rem;
   }
   
-  /* Ajustar el canvas de código para móviles */
   .code-banner {
-    opacity: 0.3; /* Menos visible en móviles para mejor legibilidad */
+    opacity: 0.3; 
   }
 }
 
@@ -678,12 +677,12 @@ nav {
 /* ====== MEJORAR NAVEGACIÓN EN MÓVILES ====== */
 @media (max-width: 768px) {
   nav {
-    padding: 0.5rem 0; /* Menos padding */
+    padding: 0.5rem 0;
   }
   
   .nav-content {
     flex-direction: column;
-    gap: 0.8rem; /* Reducir gap */
+    gap: 0.8rem;
     padding: 0.5rem 0;
   }
   
@@ -691,11 +690,11 @@ nav {
     order: 2;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.2rem; /* Menos espacio entre enlaces */
+    gap: 0.2rem;
   }
   
   .nav-link {
-    padding: 0.8rem 1rem; /* Menos padding */
+    padding: 0.8rem 1rem;
     font-size: 0.85rem;
     border-bottom-width: 2px;
   }
@@ -736,6 +735,195 @@ nav {
     padding: 0.35rem 0.5rem;
     padding-right: 1.4rem;
     min-width: 60px;
+  }
+}
+
+/* ====== MEJORAS PARA SECCIÓN SOBRE MÍ CON CARDS ====== */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-card {
+  background: var(--gradient-card);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(100, 255, 218, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-glow);
+}
+
+.about-card:hover::before {
+  opacity: 1;
+}
+
+.about-card-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.about-card:hover .about-card-icon {
+  transform: scale(1.1);
+}
+
+.about-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+}
+
+.about-card p {
+  line-height: 1.7;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
+  font-size: 1rem;
+  text-align: left;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Efectos especiales para cada card */
+.about-card:nth-child(1) {
+  border-left: 4px solid var(--primary-color);
+}
+
+.about-card:nth-child(2) {
+  border-left: 4px solid var(--secondary-color);
+}
+
+.about-card:nth-child(3) {
+  border-left: 4px solid var(--accent-color);
+}
+
+.about-card:nth-child(1):hover {
+  box-shadow: 0 8px 30px rgba(0, 217, 255, 0.2);
+}
+
+.about-card:nth-child(2):hover {
+  box-shadow: 0 8px 30px rgba(100, 255, 218, 0.2);
+}
+
+.about-card:nth-child(3):hover {
+  box-shadow: 0 8px 30px rgba(187, 134, 252, 0.2);
+}
+
+/* Responsive para cards de "Sobre Mí" */
+@media (max-width: 768px) {
+  .about-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-card {
+    padding: 2rem;
+    min-height: 240px;
+  }
+  
+  .about-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .about-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .about-card p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-card {
+    padding: 1.8rem;
+    min-height: 220px;
+  }
+  
+  .about-card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+/* Animación de entrada para las cards */
+.about-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.about-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.about-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.about-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
