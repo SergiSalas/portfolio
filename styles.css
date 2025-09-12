@@ -433,6 +433,11 @@ section {
   overflow: hidden;
 }
 
+/* Agregar margen superior a la primera sección después del header */
+section:first-of-type {
+  margin-top: 2rem;
+}
+
 section::before {
   content: '';
   position: absolute;
@@ -883,15 +888,20 @@ section h2::after {
 
 /* ====== HABILIDADES ====== */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-top: 2rem;
+  padding-bottom: 1rem; /* espacio para scrollbar */
 }
 
 .skill-category {
+  flex: 1 0 calc((100% - 8rem) / 5); /* 5 cards visibles en desktop */
+  min-width: 280px;                   /* ancho mínimo por card */
   background: var(--gradient-card);
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 20px;
   border: 1px solid var(--border-color);
   position: relative;
@@ -1297,15 +1307,41 @@ section h2::after {
   }
 }
 
+/* Responsive para habilidades en móviles */
+@media (max-width: 768px) {
+  .skill-category {
+    flex: 1 0 calc((100% - 4rem) / 3); /* 3 cards en tablet */
+    min-width: 250px;
+    padding: 1.5rem;
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-category {
+    flex: 1 0 calc((100% - 2rem) / 2); /* 2 cards en móvil */
+    min-width: 220px;
+    padding: 1.2rem;
+    min-height: 300px;
+  }
+}
+
 /* ====== CONTACTO ====== */
 .contact-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 2rem;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch;
   margin-top: 2rem;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.contact-info .contact-item {
+  flex: 1 0 calc((100% - 4rem) / 3); 
+  min-width: 260px;                
 }
 
 .contact-item {
