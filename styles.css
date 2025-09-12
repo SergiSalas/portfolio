@@ -822,6 +822,18 @@ section h2::after {
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* Estilos para los enlaces de GitHub en proyectos */
+.project-card a:hover {
+  color: var(--bg-primary) !important;
+  background: var(--secondary-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.3);
+}
+
+.project-card a:active {
+  transform: translateY(0);
+}
+
 /* ====== HABILIDADES ====== */
 .skills-grid {
   display: grid;
