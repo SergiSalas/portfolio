@@ -243,7 +243,6 @@ body::before {
   transform: rotate(-5deg);
 }
 
-/* Responsive para móviles */
 @media (max-width: 768px) {
   .nav-content {
     flex-direction: column;
@@ -262,15 +261,17 @@ body::before {
   
   .language-selector select {
     font-size: 0.8rem;
-    padding: 0.5rem 0.8rem 0.5rem 2rem;
+    padding: 0.5rem 0.8rem 0.5rem 2.2rem; /* Aumentado padding izquierdo */
     padding-right: 1.8rem;
-    min-width: 70px;
+    min-width: 75px; /* Aumentado ancho mínimo */
   }
   
   .language-selector::after {
     left: 6px;
     width: 14px;
     height: 10px;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
   }
   
   .language-selector .code-decoration {
@@ -281,6 +282,62 @@ body::before {
   
   .nav-link::before {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 0;
+  }
+  
+  .nav-link {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .language-selector select {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem 0.4rem 2rem; /* Ajustado padding */
+    padding-right: 1.6rem;
+    min-width: 70px;
+  }
+  
+  /* Bandera más pequeña en móviles muy pequeños */
+  .language-selector::after {
+    left: 5px;
+    width: 12px;
+    height: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/* Mejoras adicionales para el selector en móvil */
+@media (max-width: 568px) {
+  .language-selector {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 0.1rem;
+  }
+  
+  .language-selector select {
+    padding: 0.4rem 0.7rem 0.4rem 2.1rem;
+    min-width: 72px;
+    background-size: 10px;
+    background-position: right 0.5rem center;
+  }
+  
+  .language-selector::after {
+    left: 6px;
+    width: 13px;
+    height: 9px;
+    border-radius: 1px;
+    opacity: 0.95;
+  }
+  
+  .language-selector:hover::after {
+    transform: translateY(-50%) scale(1.05);
   }
 }
 
