@@ -235,8 +235,6 @@ body::before {
 }
 
 /* ====== HEADER ====== */
-
-/* Banner animado de código (header) */
 .header {
   position: relative;
   overflow: hidden;
@@ -245,7 +243,7 @@ body::before {
 .code-banner {
   position: absolute;
   inset: 0;
-  z-index: 0;         /* detrás del contenido */
+  z-index: 0;         
   pointer-events: none;
 }
 
@@ -255,12 +253,10 @@ body::before {
   height: 100%;
 }
 
-/* Capa de gradiente para dar el look del banner y legibilidad del texto */
 .code-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* Gradiente base (ajústalo a tu paleta) */
   background:
     radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.15), transparent 60%),
     linear-gradient(120deg, #00d2ff 0%, #3a7bd5 50%, #8a60ff 100%);
@@ -268,7 +264,6 @@ body::before {
   opacity: 0.55;
 }
 
-/* Asegura que el contenido del header quede encima */
 .header .container,
 .header .header-content,
 .header .profile-section {
@@ -276,7 +271,6 @@ body::before {
   z-index: 1;
 }
 
-/* Respeta preferencias de accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   #codeCanvas { display: none; }
   .code-overlay { opacity: 0.8; }
@@ -340,6 +334,73 @@ header::before {
   opacity: 0.95;
   font-weight: 300;
   font-family: 'JetBrains Mono', monospace;
+}
+
+/* ====== RESPONSIVE MEJORADO PARA HEADER ====== */
+@media (max-width: 768px) {
+  header {
+    padding: 4rem 1rem; /* Reducir padding */
+  }
+  
+  .name {
+    font-size: 2.2rem; /* Más pequeño en móviles */
+    margin-bottom: 0.8rem;
+    line-height: 1.1;
+  }
+  
+  .title {
+    font-size: 1rem; /* Reducir tamaño */
+    margin-top: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .profile-photo {
+    width: 140px; /* Más pequeña */
+    height: 140px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profile-section {
+    gap: 1rem;
+  }
+  
+  .profile-info {
+    padding: 0 1rem; /* Añadir padding lateral */
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 3rem 0.5rem; /* Aún más compacto */
+  }
+  
+  .name {
+    font-size: 1.8rem; /* Más pequeño para móviles muy pequeños */
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  
+  .title {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 120px; /* Aún más pequeña */
+    height: 120px;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-info {
+    padding: 0 0.5rem;
+  }
+  
+  /* Ajustar el canvas de código para móviles */
+  .code-banner {
+    opacity: 0.3; /* Menos visible en móviles para mejor legibilidad */
+  }
 }
 
 /* ====== FOTO DE PERFIL MEJORADA ====== */
@@ -420,6 +481,70 @@ nav {
 .nav-link:hover::before {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* ====== MEJORAR NAVEGACIÓN EN MÓVILES ====== */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.5rem 0; /* Menos padding */
+  }
+  
+  .nav-content {
+    flex-direction: column;
+    gap: 0.8rem; /* Reducir gap */
+    padding: 0.5rem 0;
+  }
+  
+  .nav-links {
+    order: 2;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.2rem; /* Menos espacio entre enlaces */
+  }
+  
+  .nav-link {
+    padding: 0.8rem 1rem; /* Menos padding */
+    font-size: 0.85rem;
+    border-bottom-width: 2px;
+  }
+  
+  .language-selector {
+    order: 1;
+    margin-left: 0;
+    margin-bottom: 0;
+    align-self: center;
+  }
+  
+  .language-selector select {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+    padding-right: 1.6rem;
+    min-width: 65px;
+  }
+  
+  .language-selector::after {
+    font-size: 0.5rem;
+    top: -3px;
+    right: -3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 0;
+  }
+  
+  .nav-link {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .language-selector select {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.5rem;
+    padding-right: 1.4rem;
+    min-width: 60px;
+  }
 }
 
 /* ====== SECCIONES ====== */
@@ -1284,6 +1409,7 @@ section h2::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .contact-item::before {
@@ -1296,7 +1422,7 @@ section h2::after {
   background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(100, 255, 218, 0.05) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 1;
+  z-index: 2;
 }
 
 .contact-item:hover {
@@ -1316,7 +1442,7 @@ section h2::after {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
   position: relative;
-  z-index: 3;
+  z-index: 10;
 }
 
 .contact-item span {
@@ -1325,7 +1451,7 @@ section h2::after {
   font-size: 1rem;
   font-family: 'JetBrains Mono', monospace;
   position: relative;
-  z-index: 3;
+  z-index: 10;
   line-height: 1.5;
 }
 
