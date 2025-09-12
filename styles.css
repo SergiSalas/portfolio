@@ -1137,9 +1137,14 @@ section h2::after {
   z-index: 2;
 }
 
-/* ====== RESPONSIVE PARA HABILIDADES ====== */
+.flag-image {
+  width: 24px;
+  height: auto;
+  border-radius: 2px;
+  object-fit: cover;
+}
 
-/* TABLET: 2 columnas (768px - 1200px) */
+/* ====== RESPONSIVE PARA HABILIDADES ====== */
 @media (max-width: 1200px) {
   .skill-category {
     width: calc(50% - 1rem); /* 2 por fila en tablet */
@@ -1156,14 +1161,13 @@ section h2::after {
   }
 }
 
-/* MÓVIL: 1 columna (hasta 768px) */
 @media (max-width: 768px) {
   .skills-grid {
     gap: 1.5rem;
   }
   
   .skill-category {
-    width: 100%; /* 1 por fila en móvil */
+    width: 100%; 
     max-width: none;
     padding: 1.5rem;
     min-height: auto;
@@ -1206,7 +1210,6 @@ section h2::after {
   }
 }
 
-/* MÓVILES PEQUEÑOS: Layout especial en grid (hasta 480px) */
 @media (max-width: 480px) {
   .skill-category {
     padding: 1.2rem;
@@ -1293,6 +1296,7 @@ section h2::after {
   background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(100, 255, 218, 0.05) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .contact-item:hover {
@@ -1312,7 +1316,7 @@ section h2::after {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .contact-item span {
@@ -1321,7 +1325,7 @@ section h2::after {
   font-size: 1rem;
   font-family: 'JetBrains Mono', monospace;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   line-height: 1.5;
 }
 
@@ -1332,7 +1336,7 @@ section h2::after {
   font-family: 'JetBrains Mono', monospace;
   text-decoration: none;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 0.8rem 1.5rem;
   border: 2px solid var(--secondary-color);
   border-radius: 12px;
@@ -1366,6 +1370,7 @@ section h2::after {
 
 .contact-item:has(a)::before {
   background: linear-gradient(135deg, rgba(100, 255, 218, 0.08) 0%, rgba(0, 217, 255, 0.08) 100%);
+  z-index: 1;
 }
 
 /* Responsive para contacto */
@@ -1417,6 +1422,7 @@ section h2::after {
     border-radius: 10px;
   }
 }
+
 /* ====== FOOTER ====== */
 footer {
   background: var(--bg-primary);
