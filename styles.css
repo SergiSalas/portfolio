@@ -986,6 +986,67 @@ section h2::after {
   box-shadow: var(--shadow-glow);
 }
 
+/* Video de presentación */
+.video-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.video-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.video-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .video-container {
+    padding: 0.5rem;
+    margin: 0 1rem;
+  }
+  
+  .video-section h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Para sección independiente */
+#video-presentacion {
+  padding: 4rem 0;
+  background: var(--background-alt);
+}
+
+#video-presentacion h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#video-presentacion p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ====== EXPERIENCIA LABORAL ====== */
 .experience-item {
   background: var(--gradient-card);
