@@ -1676,7 +1676,7 @@ section h2::after {
   margin-bottom: 1rem;
   flex-shrink: 1; /* Permite que se encoja si es necesario */
   overflow-y: auto;
-  max-height: 200px; /* Límite de altura con scroll */
+  max-height: 220px; /* Límite de altura con scroll */
 }
 
 /* Scrollbar personalizada para features */
@@ -1700,9 +1700,9 @@ section h2::after {
 
 .project-features h4 {
   color: var(--secondary-color);
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 0.8rem 0;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 600;
 }
 
@@ -1716,13 +1716,13 @@ section h2::after {
   color: var(--text-secondary);
   padding: 0.3rem 0;
   line-height: 1.4;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
 }
 
 .project-features li::before {
   content: '▹';
   color: var(--secondary-color);
-  margin-right: 0.5rem;
+  margin-right: 0.6rem;
   font-weight: bold;
 }
 
